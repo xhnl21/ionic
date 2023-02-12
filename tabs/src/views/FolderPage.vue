@@ -29,7 +29,8 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'FolderPage',
-  components: {  }
+  components: {
+  }
 });
 </script>
 
