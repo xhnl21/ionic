@@ -28,7 +28,6 @@
   </ion-page>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 // import ExploreContainer from '@/components/ExploreContainer.vue';

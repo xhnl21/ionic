@@ -5,29 +5,36 @@
         <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>Reset Your Password</ion-title>
+        <ion-title>Register</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <form>
         <ion-item lines="full">
+          <ion-label position="floating">First name</ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Last name</ion-label>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" required></ion-input>
+          <ion-input type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" required></ion-input>
         </ion-item>
         <ion-row>
           <ion-col>
-            <ion-button type="submit" color="danger" expand="block">Send</ion-button>
+            <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
           </ion-col>
         </ion-row>
-        <small>
-          Please provide the username or email address that you used when you signed
-          up for your Evernote account.
-        </small>
       </form>
     </ion-content>
   </ion-page>
 </template>
-
 
 <script lang="ts">
 import { defineComponent } from 'vue';
