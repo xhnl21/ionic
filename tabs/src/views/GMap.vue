@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="map" ref="mapDivRef"></div> -->
-    <capacitor-google-map id="map"></capacitor-google-map>
+    <!-- <capacitor-google-map id="map"></capacitor-google-map> -->
 </template>
   
 <script>
@@ -9,42 +9,47 @@
 // clave API: AIzaSyBGXPFQcq8Rp895QqwnrYhbSGC-i9XHI64
 // import { ref, onBeforeMount } from 'vue';
 
-import { CapacitorGoogleMaps } from '@capacitor-community/capacitor-googlemaps-native';
-import { environment } from './environment.vue';
-import { GoogleMap } from '@capacitor/google-maps';    
+// import { CapacitorGoogleMaps } from '@capacitor-community/capacitor-googlemaps-native';
+// import { environment } from './environment.vue';
+// import { GoogleMap } from '@capacitor/google-maps';    
     export default{
         name: 'Gmap',
-        async setup() {
-            const apiKey = "AIzaSyDfu-PKZ1zO8POkdlrSWG36pLZEtbH5cz8Y";
-            const mapElement = document.getElementById('map');
-            const mapConfig = {
-                center: {
-                    lat: 33.6,
-                    lng: -117.9,
-                },
-                zoom: 8,
-                androidLiteMode: false,
-            }
-            const mapOptions = {
-                id: 'map',
-                apiKey: apiKey,
-                config: mapConfig,
-                element: mapElement,
-            }
+        // async setup() {
+        //     const apiKey = "AIzaSyBGXPFQcq8Rp895QqwnrYhbSGC-i9XHI64";
+        //     const mapElement = document.getElementById('map');
+        //     console.log(mapElement);
+        //     const mapConfig = {
+        //         center: {
+        //             lat: 33.6,
+        //             lng: -117.9,
+        //         },
+        //         zoom: 8,
+        //         androidLiteMode: false,
+        //     }
+        //     const mapOptions = {
+        //         id: 'map',
+        //         apiKey: apiKey,
+        //         config: mapConfig,
+        //         element: mapElement,
+        //     }
 
-            // Create the Map Element
-            const map = await GoogleMap.create(mapOptions);
-
-            // Drop a Map Marker
-            await map.addMarkers({
-                coordinate: {
-                    lat:-33.451291048345425, 
-                    lng: -70.66532145767152
-                },
-                zoomm:8,
-                title: 'Hello world',
-            });
-        }  
+        //     // Create the Map Element
+        //     const map = await GoogleMap.create(mapOptions);
+            
+        //     // Drop a Map Marker
+        //     await map.addMarkers({
+        //         coordinate: {
+        //             lat:-33.451291048345425, 
+        //             lng: -70.66532145767152
+        //         },
+        //         zoomm:8,
+        //         title: 'Hello world',
+        //     });
+        //     console.log(map);
+        //     return {
+        //         map
+        //     }
+        // }  
         // props: {
         //     center : {lat: Number , lng: Number},
         //     zoom : Number,
