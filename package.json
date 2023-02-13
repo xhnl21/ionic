@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@capacitor-community/capacitor-googlemaps-native": "^1.2.0",
+    "@capacitor/geolocation": "^4.1.0",
+    "@capacitor/google-maps": "^4.4.0",
     "vuex": "^4.1.0"
   }
 }
