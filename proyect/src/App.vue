@@ -30,21 +30,15 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonApp,
-  IonContent,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonMenu,
-  IonMenuToggle,
-  IonNote,
-  IonRouterOutlet,
-  IonSplitPane,
-} from '@ionic/vue';
 import { ref } from 'vue';
+// import custom from './custom';
+// export default {
+//     setup () {
+//         return {
+//           custom,
+//         }
+//     }
+// };
 import {
   archiveOutline,
   archiveSharp,
@@ -66,7 +60,7 @@ const selectedIndex = ref(0);
 const appPages = [
   {
     title: 'Tutorial',
-    url: '/folder/Tutorial',
+    url: '/Tutorial',
     iosIcon: mailOutline,
     mdIcon: mailSharp,
   },

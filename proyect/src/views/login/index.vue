@@ -2,7 +2,8 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <!-- <ion-button v-on:click="favorite()">Go to detail1</ion-button> -->
+        <ion-icon onload="getIcons('mailOutline')"></ion-icon>
+        <!-- <ion-icon :src="icon('mailOutline')"></ion-icon> -->
         <ion-title>Log In</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -23,7 +24,7 @@
               <ion-label router-link="/Forgot">Forgot Password?</ion-label>
               <br><br><br>
               <ion-label>New User?</ion-label> <br><br>
-              <ion-label router-link="/Register">Sing Up</ion-label>
+              <ion-button router-link="/Register">Sing up</ion-button>  
             </ion-col>
           </ion-row>
         </form>
@@ -31,22 +32,26 @@
     </ion-content>
   </ion-page>
 </template>
-<script setup lang="ts">
-// import { defineComponent } from 'vue';
-import { IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar, IonLabel, IonInput, IonRow, IonCol, IonButton } from '@ionic/vue';
-// export default defineComponent({
-//     setup() {
-//       return { 
-//         IonLabel, IonRow, IonCol, IonButton, IonInput, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar
-//       };
-//     },
-//     methods: {
-//       favorite() {
-//         console.log("demo");
-//         this.$router.push('register')
-//       },
-//     },
-// });
+<script setup lang="ts">import { IonPage, IonHeader, IonToolbar, IonIcon, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonRow, IonCol, IonButton } from '@ionic/vue';
+
+// console.log(icons['add']);
+
+// console.log(window.icons);
+
+//  icon(name: any) {
+//   // console.log(this.i[name]);
+//   // return ":ios="+this.i[name]+" :md="+this.i[name];
+//   return this.i[name];
+//   window.icons
+// }
+function getIcons(icon: any): string {
+    const icons = window.icons;
+    return ":ios="+icons[icon]+" :md="+icons[icon];
+}
+// export default {
+
+// };
+
 </script>
 
 <style scoped>

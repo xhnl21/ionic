@@ -2,7 +2,6 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button @click="() => router.push('/Login')">Go to detail</ion-button>
         <ion-button router-link="/Login">
           <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
         </ion-button>   
@@ -41,17 +40,12 @@
 
 <script lang="ts">
 import { logoIonic, arrowBackSharp } from 'ionicons/icons';
-import { IonIcon, IonLabel, IonRow, IonCol, IonButton, IonInput, IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
 export default defineComponent({
-    components: { IonIcon },
+    components: { },
     setup() {
-      const router = useRouter();
-      return { 
-        router,
-        logoIonic, arrowBackSharp,
-        IonLabel, IonRow, IonCol, IonButton, IonInput, IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar
+      return {
+        logoIonic, arrowBackSharp,        
       };
     },
 });

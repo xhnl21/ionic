@@ -2,9 +2,9 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
+        <ion-button router-link="/Login">
+          <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+        </ion-button>   
         <ion-title>Reset Your Password</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -27,8 +27,17 @@
     </ion-content>
   </ion-page>
 </template>
-<script setup lang="ts">
-import { IonButtons, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar, IonLabel, IonInput, IonRow, IonCol, IonButton } from '@ionic/vue';
+<script lang="ts">
+import { logoIonic, arrowBackSharp } from 'ionicons/icons';
+import { defineComponent } from 'vue';
+export default defineComponent({
+    components: {},
+    setup() {
+      return {
+        logoIonic, arrowBackSharp,        
+      };
+    },
+});
 </script>
 
 <style scoped>
