@@ -1,0 +1,7 @@
+{
+  "name": "fcm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
