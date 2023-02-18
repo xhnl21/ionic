@@ -1,0 +1,17 @@
+ubicarse dentro del proyecto ionic
+
+instalar
+npm install cordova-plugin-googleplus
+npm install @ionic-native/google-plus
+npm install @codetrix-studio/capacitor-google-auth
+npm install @ionic-native/core
+npm install @capacitor/android
+
+npx cap add android
+npm run build
+npx cap sync
+npx cap open android
+
+google id
+Nombre público del proyecto: project-427726351463
+Correo electrónico de asistencia del proyecto: xhnl21@gmailcom
