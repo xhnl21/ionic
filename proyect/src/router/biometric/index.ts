@@ -3,11 +3,11 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/Inbox'
+    redirect: '/Biometric'
   },
   {
-    path: '/folder/:id',
-    component: () => import ('../../views/FolderPage.vue')
+    path: '/Biometric',
+    component: () => import ('../../views/biometric/index.vue')
   }
 ]
 

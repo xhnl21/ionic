@@ -3,10 +3,10 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/Tutorial'
+    redirect: '/Welcome'
   },
   {
-    path: '/folder/Tutorial',
+    path: '/Welcome',
     component: () => import ('../../views/welcome/index.vue')
   }
 ]

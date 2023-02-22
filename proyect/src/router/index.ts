@@ -2,10 +2,14 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import welcome from './welcome';
 import tutorial from './tutorial';
 import login from './login';
+import biometric from './biometric';
 import forgot from './forgot';
+import restpass from './restpass';
 import register from './register';
+import opt from './opt';
+import dashboard from './dashboard';
 
-const importRouter = [welcome,login,forgot,register,tutorial];
+const importRouter = [welcome,login,biometric,forgot,register,tutorial,restpass,opt,dashboard];
 const routes: any[] = [];
 
 function allRoutersX (data: any[]) {
