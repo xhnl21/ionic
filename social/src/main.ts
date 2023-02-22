@@ -22,8 +22,11 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
+// import vue3GoogleLogin from 'vue3-google-login'
 const app = createApp(App)
+  // .use(vue3GoogleLogin, {
+  //   clientId: '64349569579-ebh4v58m5i1v7f15t82b5p1b61grqdca.apps.googleusercontent.com'
+  // })
   .use(IonicVue)
   .use(router);
   
