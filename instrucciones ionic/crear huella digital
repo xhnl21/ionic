@@ -2,6 +2,7 @@ crear certificado
 ubicarse dentro del proyecto
 debug.keystore: representa el nombre del proyecto junto con su extencion .keystore
 keytool -genkey -v -keystore autobox.keystore -alias debug -keyalg RSA -keysize 2048 -validity 10000
+pass:furion21
 luego te pedira colocar pass y confirmar pass
 te pedira primer y segundo nombre
 te pedira el nombre de unidad de la organizacion

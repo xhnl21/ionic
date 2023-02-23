@@ -28,7 +28,8 @@
     "ionicons": "^6.0.3",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12",
-    "vue3-google-login": "^2.0.14"
+    "vue3-google-login": "^2.0.14",
+    "vue3-google-oauth2": "^1.0.7"
   },
   "devDependencies": {
     "@capacitor/cli": "4.6.3",

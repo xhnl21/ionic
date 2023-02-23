@@ -2,10 +2,10 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <!-- <ion-buttons slot="start">
+        <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
-        </ion-buttons> -->
-        <menus></menus>
+        </ion-buttons>
+        <!-- <menus></menus> -->
         <ion-title text-center>MiAutoBox</ion-title>
         <ion-buttons slot="end" router-link="/Welcome">
           <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
@@ -24,19 +24,20 @@
   </ion-page>
 </template>
 <script>
-import menus from "../../custom/components/menu.vue";
+// import menus from "../../custom/components/menu.vue";
 import { notificationsOutline, searchOutline, cartOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 export default defineComponent({
-    components: {menus},
+    // components: {menus},
     data () {
         return {}
     },
     methods: {},
     setup() {       
-      console.log(menus);
+      // console.log(menus);
       return { 
-        notificationsOutline, searchOutline, cartOutline, menus
+        notificationsOutline, searchOutline, cartOutline, 
+        // menus
       };
     },
 });
