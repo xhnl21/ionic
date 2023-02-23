@@ -1,0 +1,65 @@
+module.exports = {
+  consumerKey: 'ck_f60f7087fe3fa90155040a2baf6a6f8f61ccb04b',
+  consumerSecret: 'cs_2a6f8415937bd68be86faacf2260f3b4ba4c138f',
+  url: 'https://vidatronicvenezuela.com/prueba',
+  wpAPI: true,
+  version: 'wc/v3'
+};
+
+
+En el archivo app.js o index.js de tu aplicación Node.js, utiliza la biblioteca Express para crear una API de inicio de sesión y registro:
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const WooCommerceAPI = require('woocommerce-api');
+const config = require('./config');
+
+const app = express();
+const WooCommerce = new WooCommerceAPI(config);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+
+  WooCommerce.get('customers', { email: username }, (err, data, response) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      const customer = JSON.parse(response.body)[0];
+
+      if (customer && customer.id && customer.email === username && customer.password === password) {
+        res.status(200).json({ message: 'Login successful' });
+      } else {
+        res.status(401).json({ message: 'Invalid credentials' });
+      }
+    }
+  });
+});
+
+app.post('/api/register', (req, res) => {
+  const { email, password } = req.body;
+
+  const customerData = {
+    email: email,
+    password: password,
+    first_name: '',
+    last_name: '',
+    username: email,
+    billing: {},
+    shipping: {},
+  };
+
+  WooCommerce.post('customers', customerData, (err, data, response) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      res.status(201).json({ message: 'Registration successful' });
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});

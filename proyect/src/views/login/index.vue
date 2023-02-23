@@ -32,38 +32,33 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-item>
+                <ion-item v-if="showPass === false">
                   <ion-label position="stacked">Enter Password</ion-label> 
-                  <ion-input fill="outline" type="password" required v-model="data.pass" v-if="showPass === false">                
-                    <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
-                      <ion-icon :ios="eye" :md="eye"></ion-icon> 
-                    </ion-button>
+                    <ion-input fill="outline" type="password" required v-model="data.pass">  
                   </ion-input> 
-                  <ion-input fill="outline" type="text" required v-model="data.passA" v-else>                
-                    <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPassword">
+                      <ion-icon :ios="eye" :md="eye"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-item>  
+                <ion-item v-else>
+                  <ion-label position="stacked">Enter Password</ion-label> 
+                    <ion-input fill="outline" type="text" required v-model="data.pass">  
+                  </ion-input> 
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPassword">
                       <ion-icon :ios="eyeOff" :md="eyeOff"></ion-icon> 
                     </ion-button>
-                  </ion-input>  
-                </ion-item>     
+                  </ion-buttons>
+                </ion-item>                     
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col style="text-align: right;">
                   <ion-label router-link="/Forgot" class="btnLinkFP">Forgot Password?</ion-label>
               </ion-col>
-            </ion-row>  
-            <ion-row>
-              <ion-col>
-                <ion-item>
-                  <ion-checkbox slot="start" expand="full" required v-model="data.privacity"></ion-checkbox>
-                  <ion-label>
-                    <p style="font-size: 10px;line-height: 120%;">
-                      By Login in you agree to our Terms & <br> Condition and Privaticy Policy 
-                    </p>              
-                  </ion-label>
-                </ion-item> 
-              </ion-col>
-            </ion-row>    
+            </ion-row>   
             <ion-row>
               <ion-col>
                 <ion-button type="submit" color="light" expand="full">Log In</ion-button>   
@@ -104,13 +99,6 @@
           @didDismiss="plaseWait(false)"
         >
         </ion-alert>
-        <ion-alert
-          :is-open="priv"
-          message="Please you must accept the terms and conditions."
-          :buttons="['OK']"
-          @didDismiss="privacitys(false)"
-        >
-        </ion-alert>
       </div>
     </ion-content>
   </ion-page>
@@ -126,24 +114,15 @@ export default {
           data: {
               email:"xhnl21@gmail.com",
               pass:"123456789",
-              passA:"",
-              privacity:false,
           }
       }
   },
   methods: {
     form () {
-      console.log(this.data);
-      if (this.data.privacity === false) {
-        this.privacitys(true);
-      } else {
-        this.plaseWait(true);
-        this.$router.push('/Welcome');
-      }      
+      console.log(this.data);  
     },
     showPassword () {
       if (this.showPass === false) {
-        this.data.passA = this.data.pass;
         this.showPass = true;
       } else {
         this.showPass = false;
@@ -154,8 +133,6 @@ export default {
     // const iconsx = ref(null)
     const pWait = ref(false);
     const plaseWait = (state) => (pWait.value = state);
-    const priv = ref(false);
-    const privacitys = (state) => (priv.value = state);
 //     onMounted(() => {
 //       // const id = iconsx.value.$el.id
 //       // const icons = window.icons;
@@ -204,7 +181,6 @@ export default {
       // iconsx,
       arrowBackSharp, eye, eyeOff, fingerPrintOutline, logoGoogle, logoFacebook,
       pWait, plaseWait,
-      priv, privacitys
     }
   }
 };

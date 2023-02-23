@@ -7,7 +7,6 @@
             <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
           </ion-button>   
         </ion-buttons>
-
         <ion-title text-center style="text-align: center;">Reset Password</ion-title>
       </ion-toolbar>
     </ion-header>    
@@ -15,66 +14,75 @@
       <div id="container">
         <form @submit.prevent="form">
           <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <small style="text-align: center;">
-                    Please set your new password.
-                  </small>    
-                </ion-col>
-              </ion-row>
-              <div class="space"></div>
-              <div class="space"></div>
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label position="stacked">Password</ion-label>
-                    <ion-input fill="outline" type="password" v-model="data.pass"></ion-input>
-                  </ion-item> 
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label position="stacked">Confirm Password</ion-label>
-                    <ion-input fill="outline" type="password" v-model="data.cpass"></ion-input>
-                  </ion-item> 
-                </ion-col>
-              </ion-row>              
-              <div class="space"></div>
-              <div class="space"></div>
-              <div class="space"></div>
-              <div class="space"></div>              
-              <ion-row>
-                <ion-col>
-                  <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
-                </ion-col>
-              </ion-row>        
-            </ion-grid>          
-            <!-- <div class="space"></div>
-            <small style="text-align: center;">
-              Please set your new password.
-            </small>
             <div class="space"></div>
             <div class="space"></div>
-            <ion-list>
-              <ion-item>
-                <ion-label position="stacked">Password</ion-label>
-                <ion-input fill="outline" type="password" v-model="data.pass"></ion-input>
-              </ion-item>
-            </ion-list>
-            <ion-list>
-              <ion-item>
-                <ion-label position="stacked">Confirm Password</ion-label>
-                <ion-input fill="outline" type="password" v-model="data.cpass"></ion-input>
-              </ion-item>
-            </ion-list>
+            <ion-row>
+              <ion-col>
+                <small style="text-align: center;">
+                  Please set your new password.
+                </small>    
+              </ion-col>
+            </ion-row>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-row>
+              <ion-col>
+                <ion-item v-if="showPass === false">
+                  <ion-label position="stacked">Enter Password</ion-label> 
+                    <ion-input fill="outline" type="password" required v-model="data.pass">  
+                  </ion-input> 
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPassword">
+                      <ion-icon :ios="eye" :md="eye"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-item>  
+                <ion-item v-else>
+                  <ion-label position="stacked">Enter Password</ion-label> 
+                    <ion-input fill="outline" type="text" required v-model="data.pass">  
+                  </ion-input> 
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPassword">
+                      <ion-icon :ios="eyeOff" :md="eyeOff"></ion-icon> 
+                    </ion-button>
+                  </ion-buttons>
+                </ion-item>     
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item v-if="showPassA === false">
+                  <ion-label position="stacked">Confirm Password</ion-label> 
+                    <ion-input fill="outline" type="password" required v-model="data.cpass">  
+                  </ion-input> 
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPasswordA">
+                      <ion-icon :ios="eye" :md="eye"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-item>  
+                <ion-item v-else>
+                  <ion-label position="stacked">Confirm Password</ion-label> 
+                    <ion-input fill="outline" type="text" required v-model="data.cpass">  
+                  </ion-input> 
+                  <ion-buttons slot="end">
+                    <ion-button @click="showPasswordA">
+                      <ion-icon :ios="eyeOff" :md="eyeOff"></ion-icon> 
+                    </ion-button>
+                  </ion-buttons>
+                </ion-item>                    
+              </ion-col>
+            </ion-row>              
             <div class="space"></div>
             <div class="space"></div>
             <div class="space"></div>
-            <div class="space"></div>
-            <ion-list>
-              <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
-            </ion-list>                     -->
+            <div class="space"></div>              
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
+              </ion-col>
+            </ion-row>        
+          </ion-grid>          
         </form>
       </div>
       <ion-alert
@@ -101,13 +109,14 @@
   </ion-page>
 </template>
 <script lang="ts">
-import { logoIonic, arrowBackSharp } from 'ionicons/icons';
+import { logoIonic, arrowBackSharp, eye, eyeOff, } from 'ionicons/icons';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
     components: {},
     data () {
         return {
-            message:"",
+            showPass:false,
+            showPassA:false,
             data: {
                 pass:"",
                 cpass:"",
@@ -127,6 +136,20 @@ export default defineComponent({
             }
         }      
       },
+      showPassword () {
+        if (this.showPass === false) {
+          this.showPass = true;
+        } else {
+          this.showPass = false;
+        }
+      },
+      showPasswordA () {
+        if (this.showPassA === false) {
+          this.showPassA = true;
+        } else {
+          this.showPassA = false;
+        }
+      },      
     },
     setup() {
       const pWait = ref(false);
@@ -136,7 +159,7 @@ export default defineComponent({
       const erroP = ref(false);
       const errorPass = (state: any) => (erroP.value = state);        
       return {
-        logoIonic, arrowBackSharp,
+        logoIonic, arrowBackSharp, eye, eyeOff,
         pWait, plaseWait,
         erroP, errorPass,
         nPass, newPass

@@ -2,24 +2,32 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start" color="light" router-link="/Login">
-          <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+        <ion-buttons slot="start">          
+          <ion-button router-link="/Login">
+            <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+          </ion-button>
         </ion-buttons> 
-        <ion-title text-center>Enter OPT</ion-title>        
-        <ion-buttons slot="end" router-link="/Welcome">Skip</ion-buttons>
+        <ion-title text-center style="text-align: center;">Enter OPT</ion-title>        
+        <ion-buttons slot="end" color="light">
+          <ion-button router-link="/Welcome">Skip</ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">
-      <form @submit.prevent="form">
-        <div id="container">
-          <div class="space"></div>
-          <div class="space"></div>
-          <small style="text-align: center;">
-            Please enter one time password which you have received at your resqistered email address / mobile number.
-          </small>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
+      <div id="container">
+        <form @submit.prevent="form">
+          <ion-grid>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-row>
+              <ion-col>
+                <small style="text-align: center;">
+                  Please enter one time password which you have received at your resqistered email address / mobile number.
+                </small>
+              </ion-col>
+            </ion-row>
+            <div class="space"></div>
+            <div class="space"></div>
             <ion-row>
               <ion-col>
                 <ion-input type="text" v-model="data.a" class="borderInput"></ion-input>
@@ -34,19 +42,23 @@
                 <ion-input type="text" v-model="data.d" class="borderInput"></ion-input>
               </ion-col>              
             </ion-row>
-          </ion-list>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
-            <ion-button type="submit" color="light" expand="full">Verify Code</ion-button>
-          </ion-list>
-          <ion-list>
-            <ion-button type="submit" color="light" expand="full">Resend Code</ion-button>
-          </ion-list>  
-        </div>        
-      </form>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>     
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="light" expand="full">Verify Code</ion-button>
+              </ion-col>
+            </ion-row> 
+            <ion-row> 
+              <ion-col>
+                <ion-button type="submit" color="light" expand="full">Resend Code</ion-button>
+              </ion-col>
+            </ion-row>        
+          </ion-grid>
+        </form>
+      </div>
       <ion-alert
         :is-open="pWait"
         message="Please wait..."
@@ -62,16 +74,16 @@
       </ion-alert> 
       <ion-alert
         :is-open="erroE"
-        message="Please Enter Email Address / Mobile Number."
+        message="Please Enter Number OPT."
         :buttons="['OK']"
-        @didDismiss="erroEmail(false)"
+        @didDismiss="erroOPT(false)"
       >
       </ion-alert>      
     </ion-content>
   </ion-page>
 </template>
 <script lang="ts">
-import { logoIonic, arrowBackSharp } from 'ionicons/icons';
+import { arrowBackSharp } from 'ionicons/icons';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
     components: {},
@@ -92,7 +104,7 @@ export default defineComponent({
         if (this.data.a !== "") {
           this.$router.push('/Restpass');          
         } else {
-          this.erroEmail(true);
+          this.erroOPT(true);
         }
       },
     },
@@ -102,11 +114,11 @@ export default defineComponent({
       const nPass = ref(false);
       const newPass = (state: any) => (nPass.value = state);
       const erroE = ref(false);
-      const erroEmail = (state: any) => (erroE.value = state);        
+      const erroOPT = (state: any) => (erroE.value = state);        
       return {
-        logoIonic, arrowBackSharp,
+        arrowBackSharp,
         pWait, plaseWait,
-        erroE, erroEmail,
+        erroE, erroOPT,
         nPass, newPass
       };
     },

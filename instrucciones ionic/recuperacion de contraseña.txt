@@ -1,0 +1,26 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const WooCommerceAPI = require('woocommerce-api');
+const config = require('./config');
+
+const app = express();
+const WooCommerce = new WooCommerceAPI(config);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/api/reset-password', (req, res) => {
+  const { email } = req.body;
+
+  WooCommerce.post('customers', { email: email }, (err, data, response) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      res.status(200).json({ message: 'Password reset email sent' });
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
