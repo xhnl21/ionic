@@ -18,17 +18,12 @@
         </ion-item>
       </ion-list>
     
-      <ion-list
-        class="mt-6"
-        lines="full"
-      >
+      <ion-list class="mt-6" lines="full">
         <ion-list-header>Options</ion-list-header>
-    
         <ion-item v-if="!isNative">
-        <!-- <ion-item> -->
+          <!-- <ion-item> -->
           <!-- flex-initial puts the ion-select just after the label -->
           <ion-label class="flex-initial">Biometry:</ion-label>
-    
           <ion-select
             v-model="biometryType"
             class="[--padding-start:0px] max-w-full"
@@ -48,47 +43,27 @@
     
         <ion-item v-if="isAndroid">
           <ion-label>Title:</ion-label>
-          <ion-input
-            v-model="options.androidTitle"
-            type="text"
-            autocapitalize="sentences"
-          />
+          <ion-input v-model="options.androidTitle" type="text" autocapitalize="sentences"/>
         </ion-item>
     
         <ion-item v-if="isAndroid">
           <ion-label>Subtitle:</ion-label>
-          <ion-input
-            v-model="options.androidSubtitle"
-            type="text"
-            autocapitalize="sentences"
-          />
+          <ion-input v-model="options.androidSubtitle" type="text" autocapitalize="sentences"/>
         </ion-item>
     
         <ion-item>
           <ion-label>Reason:</ion-label>
-          <ion-input
-            v-model="options.reason"
-            type="text"
-            autocapitalize="sentences"
-          />
+          <ion-input v-model="options.reason" type="text" autocapitalize="sentences" />
         </ion-item>
     
         <ion-item v-if="isNative">
           <ion-label>Cancel title:</ion-label>
-          <ion-input
-            v-model="options.cancelTitle"
-            type="text"
-            autocapitalize="sentences"
-          />
+          <ion-input v-model="options.cancelTitle" type="text" autocapitalize="sentences" />
         </ion-item>
     
         <ion-item v-if="isIOS">
           <ion-label>Fallback title:</ion-label>
-          <ion-input
-            v-model="options.iosFallbackTitle"
-            type="text"
-            autocapitalize="sentences"
-          />
+          <ion-input v-model="options.iosFallbackTitle" type="text" autocapitalize="sentences" />
         </ion-item>
     
         <ion-item v-if="isNative">
@@ -98,16 +73,11 @@
       </ion-list>
     
       <!-- We want to center the button -->
-      <div class="flex justify-center">
-        <ion-button
-          class="mt-5"
-          size="default"
-          shape="round"
-          @click="onAuthenticate"
-        >
-          Authenticate
-        </ion-button>
-      </div>
+      
+        <div class="flex justify-center">
+          <ion-button class="mt-5" size="default" shape="round" @click="onAuthenticate">Authenticate</ion-button>
+        </div> 
+     
     </ion-content>
   </ion-page>
 </template>
@@ -129,6 +99,7 @@ import {
   } from '@ionic/vue'
   import {
     computed,
+    onMounted,
     onBeforeMount,
     onBeforeUnmount,
     reactive,
@@ -162,6 +133,7 @@ import {
       type: BiometryType.irisAuthentication
     }
   ]
+
   /*
    * ref
    */
@@ -175,8 +147,8 @@ import {
     reason: '',
     cancelTitle: '',
     iosFallbackTitle: '',
-    androidTitle: '',
-    androidSubtitle: '',
+    androidTitle: 'Login using fingerprint',
+    androidSubtitle: 'Use you finger print to login to account',
     allowDeviceCredential: false
   })
   
@@ -214,9 +186,7 @@ import {
   
   const isIOS = computed(() => Capacitor.isNativePlatform() && isPlatform('ios'))
   
-  const isAndroid = computed(
-    () => Capacitor.isNativePlatform() && isPlatform('android')
-  )
+  const isAndroid = computed(() => Capacitor.isNativePlatform() && isPlatform('android'))
   
   /*
    * methods
@@ -224,7 +194,10 @@ import {
   function updateBiometryInfo(info: CheckBiometryResult): void {
     biometry.value = info
   }
-  
+  onMounted (async () => {
+      onAuthenticate()
+  })
+
   onBeforeMount(async () => {
     updateBiometryInfo(await BiometricAuth.checkBiometry())
   
