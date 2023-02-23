@@ -73,7 +73,7 @@
               <ion-col>
                 <ion-button color="danger" expand="full">              
                   <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
-                  Sign In with Google
+                  &nbsp;&nbsp; Sign In with Google
                 </ion-button>
               </ion-col>
             </ion-row>    
@@ -81,7 +81,7 @@
               <ion-col>
                 <ion-button color="primary" expand="full">
                   <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
-                  Sign In with Facebook
+                  &nbsp;&nbsp;Sign In with Facebook
                 </ion-button>
               </ion-col>
             </ion-row>
