@@ -32,6 +32,7 @@ const login = () => {
       scope: 'email profile openid',
       prompt: 'consent',
       fetch_basic_profile:true,
+      enable_serial_consent:true,
       callback: (response) => {
         console.log("Handle the response", response)
         console.log("Handle the userData")
