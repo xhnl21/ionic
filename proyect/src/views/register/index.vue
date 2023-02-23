@@ -2,12 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button color="light" router-link="/Login">
-          <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
-        </ion-button>   
-        <ion-title>     
-          Create Account
-        </ion-title>
+        <ion-buttons slot="start">
+          <ion-button router-link="/Login">
+            <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+          </ion-button>   
+        </ion-buttons>
+        <ion-title text-center style="text-align: center;">Create Account</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">

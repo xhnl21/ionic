@@ -2,37 +2,68 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button color="light" router-link="/Login">
-          <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
-        </ion-button>   
-        <ion-title>Forgot Password</ion-title>
+        <ion-buttons slot="start">
+          <ion-button slot="start" router-link="/Login">
+            <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+          </ion-button>   
+        </ion-buttons>
+
+        <ion-title text-center style="text-align: center;">Forgot Password</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">
-      <form @submit.prevent="form">
-        <div id="container">
-          <div class="space"></div>
-          <div class="space"></div>
-          <small style="text-align: center;">
-            Please enter your registered email / mobile number to reset the password.
-          </small>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
-            <ion-item>
-              <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
-              <ion-input fill="outline" type="email" v-model="data.email"></ion-input>
-            </ion-item>
-          </ion-list>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
-            <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
-          </ion-list>  
-        </div>        
-      </form>
+      <div id="container"  style="position: relative;">
+        <form @submit.prevent="form">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <small style="text-align: center;">
+                    Please enter your registered email / mobile number to reset the password.
+                  </small>     
+                </ion-col>
+              </ion-row>
+              <div class="space"></div>
+              <div class="space"></div>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
+                    <ion-input fill="outline" type="email" v-model="data.email"></ion-input> 
+                  </ion-item>   
+                </ion-col>
+              </ion-row>
+              <div class="space"></div>
+              <div class="space"></div>
+              <div class="space"></div>
+              <div class="space"></div>              
+              <ion-row>
+                <ion-col>
+                  <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
+                </ion-col>
+              </ion-row>        
+            </ion-grid>
+            <!-- <div class="space"></div>
+            <div class="space"></div>
+            <small style="text-align: center;">
+              Please enter your registered email / mobile number to reset the password.
+            </small>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-list>
+              <ion-item>
+                <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
+                <ion-input fill="outline" type="email" v-model="data.email"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-list>
+              <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
+            </ion-list>   -->
+        </form>
+      </div>  
       <ion-alert
         :is-open="pWait"
         message="Please wait..."
@@ -111,6 +142,8 @@ export default defineComponent({
     position: absolute;
     left: 10%;
     margin: -25px 0 0 0;
+    top: 5%;
+    /* transform: translateY(-50%); */
     width: 80%;
   }
 </style>

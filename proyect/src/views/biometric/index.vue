@@ -2,10 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button color="light" router-link="/Login">
-          back
-        </ion-button>   
-        <ion-title>Biometric Login</ion-title>
+        <ion-buttons slot="start" color="light" router-link="/Login">
+          <ion-button router-link="/Biometric">
+            <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+          </ion-button>          
+        </ion-buttons>           
+        <ion-title text-center style="text-align: center;">Biometric Login</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">
@@ -110,6 +112,7 @@
   </ion-page>
 </template>
 <script setup lang="ts">
+import { arrowBackSharp } from 'ionicons/icons';
 import {
     type AuthenticateOptions,
     BiometricAuth,

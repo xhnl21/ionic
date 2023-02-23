@@ -2,42 +2,81 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button color="light" router-link="/Forgot">
-          <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
-        </ion-button>   
-        <ion-title>Forgot Password</ion-title>
+        <ion-buttons slot="start">
+          <ion-button router-link="/Forgot">
+            <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
+          </ion-button>   
+        </ion-buttons>
+
+        <ion-title text-center style="text-align: center;">Reset Password</ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header>    
     <ion-content class="no-scroll">
-      <form @submit.prevent="form">
-        <div id="container">
-          <div class="space"></div>
-          <small style="text-align: center;">
-            Please set your new password.
-          </small>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
-            <ion-item>
-              <ion-label position="stacked">Password</ion-label>
-              <ion-input fill="outline" type="password" v-model="data.pass"></ion-input>
-            </ion-item>
-          </ion-list>
-          <ion-list>
-            <ion-item>
-              <ion-label position="stacked">Confirm Password</ion-label>
-              <ion-input fill="outline" type="password" v-model="data.cpass"></ion-input>
-            </ion-item>
-          </ion-list>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <div class="space"></div>
-          <ion-list>
-            <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
-          </ion-list>  
-        </div>        
-      </form>
+      <div id="container">
+        <form @submit.prevent="form">
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <small style="text-align: center;">
+                    Please set your new password.
+                  </small>    
+                </ion-col>
+              </ion-row>
+              <div class="space"></div>
+              <div class="space"></div>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="stacked">Password</ion-label>
+                    <ion-input fill="outline" type="password" v-model="data.pass"></ion-input>
+                  </ion-item> 
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="stacked">Confirm Password</ion-label>
+                    <ion-input fill="outline" type="password" v-model="data.cpass"></ion-input>
+                  </ion-item> 
+                </ion-col>
+              </ion-row>              
+              <div class="space"></div>
+              <div class="space"></div>
+              <div class="space"></div>
+              <div class="space"></div>              
+              <ion-row>
+                <ion-col>
+                  <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
+                </ion-col>
+              </ion-row>        
+            </ion-grid>          
+            <!-- <div class="space"></div>
+            <small style="text-align: center;">
+              Please set your new password.
+            </small>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-list>
+              <ion-item>
+                <ion-label position="stacked">Password</ion-label>
+                <ion-input fill="outline" type="password" v-model="data.pass"></ion-input>
+              </ion-item>
+            </ion-list>
+            <ion-list>
+              <ion-item>
+                <ion-label position="stacked">Confirm Password</ion-label>
+                <ion-input fill="outline" type="password" v-model="data.cpass"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-list>
+              <ion-button type="submit" color="light" expand="full">Resent Password</ion-button>
+            </ion-list>                     -->
+        </form>
+      </div>
       <ion-alert
         :is-open="pWait"
         message="Please wait..."

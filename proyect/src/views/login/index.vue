@@ -6,79 +6,97 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path stroke-linecap="square" stroke-miterlimit="10" stroke-width="48" d="M244 400L100 256l144-144M120 256h292" class="ionicon-fill-none"></path></svg>
         </ion-button> -->
         <!-- <ion-icon ref="iconsx" id="eye"></ion-icon> -->
-
         <!-- <ion-icon onload="getIcons('mailOutline')"></ion-icon> -->
         <!-- <ion-icon :src="icon('mailOutline')"></ion-icon> -->
-        <ion-title>Log In</ion-title>
         <!-- <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon> -->
-        <!-- <div id="list"></div> -->
-        <ion-buttons slot="end" router-link="/Biometric">
-          <ion-icon :ios="fingerPrintOutline" :md="fingerPrintOutline"></ion-icon>
+        <!-- <div id="list"></div> -->        
+        <ion-title text-center style="text-align: center;">Log In</ion-title>
+        <ion-buttons slot="end">
+          <ion-button router-link="/Biometric">
+            <ion-icon :ios="fingerPrintOutline" :md="fingerPrintOutline"></ion-icon>
+          </ion-button>          
         </ion-buttons> 
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">
       <div id="container" style="position: relative;">
         <form @submit.prevent="form">
-          <ion-list>
-            <ion-item>
-              <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
-              <ion-input fill="outline" type="email" required v-model="data.email"></ion-input>
-            </ion-item>
-          </ion-list>
-          <ion-list>
-            <ion-item> 
-              <ion-label position="stacked">Enter Password</ion-label> 
-              <ion-input fill="outline" type="password" required v-model="data.pass" v-if="showPass === false">                
-                <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
-                  <ion-icon :ios="eye" :md="eye"></ion-icon> 
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
+                  <ion-input fill="outline" type="email" required v-model="data.email"></ion-input>   
+                </ion-item>   
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Enter Password</ion-label> 
+                  <ion-input fill="outline" type="password" required v-model="data.pass" v-if="showPass === false">                
+                    <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
+                      <ion-icon :ios="eye" :md="eye"></ion-icon> 
+                    </ion-button>
+                  </ion-input> 
+                  <ion-input fill="outline" type="text" required v-model="data.passA" v-else>                
+                    <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
+                      <ion-icon :ios="eyeOff" :md="eyeOff"></ion-icon> 
+                    </ion-button>
+                  </ion-input>  
+                </ion-item>     
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col style="text-align: right;">
+                  <ion-label router-link="/Forgot" class="btnLinkFP">Forgot Password?</ion-label>
+              </ion-col>
+            </ion-row>  
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-checkbox slot="start" expand="full" required v-model="data.privacity"></ion-checkbox>
+                  <ion-label>
+                    <p style="font-size: 10px;line-height: 120%;">
+                      By Login in you agree to our Terms & <br> Condition and Privaticy Policy 
+                    </p>              
+                  </ion-label>
+                </ion-item> 
+              </ion-col>
+            </ion-row>    
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="light" expand="full">Log In</ion-button>   
+              </ion-col>
+            </ion-row>  
+            <ion-row>
+              <ion-col>
+                <div style="text-align: center;">OR</div>  
+              </ion-col>
+            </ion-row>   
+            <ion-row>
+              <ion-col>
+                <ion-button color="danger" expand="full">              
+                  <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
+                  Sign In with Google
                 </ion-button>
-              </ion-input> 
-              <ion-input fill="outline" type="text" required v-model="data.passA" v-else>                
-                <ion-button color="light" style="right: 1px; position: fixed;" @click="showPassword">                  
-                  <ion-icon :ios="eye" :md="eye"></ion-icon> 
+              </ion-col>
+            </ion-row>    
+            <ion-row>
+              <ion-col>
+                <ion-button color="primary" expand="full">
+                  <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
+                  Sign In with Facebook
                 </ion-button>
-              </ion-input>               
-            </ion-item>
-          </ion-list>
-          <ion-list style="text-align: right;">
-            <ion-button router-link="/Forgot" class="btnLinkFP">Forgot Password?</ion-button>  
-          </ion-list>   
-          <div class="space"></div>
-          <ion-item>
-            <ion-checkbox slot="start" expand="full" required v-model="data.privacity"></ion-checkbox>
-            <ion-label>
-              <p style="font-size: 10px;">
-                By Login in you agree to our Terms & Condition and <br> Privaticy Policy 
-              </p>              
-            </ion-label>
-          </ion-item>
-          <div class="space"></div>
-          <ion-list>
-            <ion-button type="submit" color="light" expand="full">Log In</ion-button>
-          </ion-list>  
-          <div class="space"></div>        
-          <ion-list>
-            <div style="text-align: center;">OR</div>
-          </ion-list>
-          <div class="space"></div>
-          <ion-list>
-            <ion-button color="danger" expand="full">              
-              <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
-              Sign In with Google
-            </ion-button>
-          </ion-list>          
-          <ion-list>
-            <ion-button color="primary" expand="full">
-              <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
-              Sign In with Facebook
-            </ion-button>
-          </ion-list>  
-          <div class="space"></div>
-          <ion-list style="text-align: center;">
-            <ion-label>New User?</ion-label>
-            <ion-button router-link="/Register" class="btnLink">Sing Up</ion-button>  
-          </ion-list>          
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col style="text-align: center;">
+                  <ion-label>New User?</ion-label>
+                  <ion-label router-link="/Register" class="btnLink">Sing Up</ion-label>
+              </ion-col>
+            </ion-row>          
+          </ion-grid>
         </form>
         <ion-alert
           :is-open="pWait"
@@ -98,7 +116,7 @@
   </ion-page>
 </template>
 <script>
-import { arrowBackSharp, eye, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
+import { arrowBackSharp, eye, eyeOff, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
 // import { onMounted } from "vue"
 import { ref } from "vue"
 export default {
@@ -184,7 +202,7 @@ export default {
 //     });
     return {
       // iconsx,
-      arrowBackSharp, eye, fingerPrintOutline, logoGoogle, logoFacebook,
+      arrowBackSharp, eye, eyeOff, fingerPrintOutline, logoGoogle, logoFacebook,
       pWait, plaseWait,
       priv, privacitys
     }
@@ -224,6 +242,7 @@ export default {
     --box-shadow: rgb(255, 255, 255);
     --padding-top: -10px;
     --padding-bottom: 10px;
+    cursor: pointer;
   }
   .btnLink {
     --background: rgb(255, 255, 255);
@@ -239,6 +258,8 @@ export default {
     --padding-top: -10px;
     --padding-bottom: 10px;
     text-decoration: underline !important;
+    cursor: pointer;
+    margin-left: 10px;
   }
   .space {
     height: 25px;
@@ -246,8 +267,6 @@ export default {
   #container {
     position: absolute;
     top: 45%;
-    /* left: 10%; */
-    /* margin: -25px 0 0 -25px; */
     margin: 15px 0 0 20px;
     transform: translateY(-50%);
     width: 90%;

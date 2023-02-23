@@ -6,20 +6,22 @@
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
         <!-- <menus></menus> -->
-        <ion-title text-center>MiAutoBox</ion-title>
-        <ion-buttons slot="end" router-link="/Welcome">
-          <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
-        </ion-buttons>     
-        <ion-buttons slot="end" router-link="/Welcome">
-          <ion-icon :ios="notificationsOutline" :md="notificationsOutline"></ion-icon>
-        </ion-buttons>   
-        <ion-buttons slot="end" router-link="/Welcome">
-          <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
-        </ion-buttons>                
+        <ion-title text-center style="text-align: center;">MiAutoBox</ion-title>
+        <ion-buttons slot="end" >
+          <ion-button router-link="/Welcome">
+            <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
+          </ion-button>
+          <ion-button router-link="/Welcome">
+            <ion-icon :ios="notificationsOutline" :md="notificationsOutline"></ion-icon>
+          </ion-button>
+          <ion-button router-link="/Welcome">
+            <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
+          </ion-button>                    
+        </ion-buttons> 
       </ion-toolbar>
     </ion-header>
     <ion-content class="no-scroll">
-      welcomw
+      welcome
     </ion-content>    
   </ion-page>
 </template>
