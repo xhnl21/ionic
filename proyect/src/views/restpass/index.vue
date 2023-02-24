@@ -12,7 +12,7 @@
     </ion-header>    
     <ion-content class="no-scroll">
       <div id="container">
-        <form @submit.prevent="form">
+        <form @submit.prevent="validate">
           <ion-grid>
             <div class="space"></div>
             <div class="space"></div>
@@ -29,7 +29,8 @@
               <ion-col>
                 <ion-item v-if="showPass === false">
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="password" required v-model="data.pass">  
+                  <ion-input fill="outline" type="password" v-model="data.pass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;  
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -39,7 +40,8 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="text" required v-model="data.pass">  
+                  <ion-input fill="outline" type="text" v-model="data.pass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -53,7 +55,8 @@
               <ion-col>
                 <ion-item v-if="showPassA === false">
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                    <ion-input fill="outline" type="password" required v-model="data.cpass">  
+                  <ion-input fill="outline" type="password" v-model="data.cpass"> 
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPasswordA">
@@ -63,7 +66,8 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                    <ion-input fill="outline" type="text" required v-model="data.cpass">  
+                  <ion-input fill="outline" type="text" v-model="data.cpass">  
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPasswordA">
@@ -84,32 +88,13 @@
             </ion-row>        
           </ion-grid>          
         </form>
-      </div>
-      <ion-alert
-        :is-open="pWait"
-        message="Please wait..."
-        @didDismiss="plaseWait(false)"
-      >
-      </ion-alert>
-      <ion-alert
-        :is-open="nPass"
-        message="Please enter your password."
-        :buttons="['OK']"
-        @didDismiss="newPass(false)"
-      >
-      </ion-alert> 
-      <ion-alert
-        :is-open="erroP"
-        message="your password does not match the confirmation"
-        :buttons="['OK']"
-        @didDismiss="errorPass(false)"
-      >
-      </ion-alert>      
+      </div>     
     </ion-content>
   </ion-page>
 </template>
 <script lang="ts">
-import { logoIonic, arrowBackSharp, eye, eyeOff, } from 'ionicons/icons';
+import { loadingController, alertController } from '@ionic/vue';
+import { lockClosed, arrowBackSharp, eye, eyeOff, } from 'ionicons/icons';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
     components: {},
@@ -124,17 +109,27 @@ export default defineComponent({
         }
     },
     methods: {
+      validate () {
+          var msj = "Please wait..."        
+          if (this.data.pass === "" || this.data.cpass === "") {
+            msj = "Please enter your password."
+            this.showLoading(msj, false);  
+            return 0;
+          }else {
+              if (this.data.pass !== this.data.cpass) {
+                  msj = "your password does not match the confirmation"
+                  this.showLoading(msj, false);
+                  return 0;
+              }
+          }  
+          this.showLoading(msj, false);          
+          setTimeout(() => {
+            this.form();
+          }, 2000);
+      },       
       form () {
-        console.log(this.data);                
-        if (this.data.pass === "" || this.data.cpass === "") {
-          this.newPass(true);
-        }else {
-            if (this.data.pass === this.data.cpass) {
-                this.plaseWait(true);
-            } else {
-                this.errorPass(true);
-            }
-        }      
+        console.log(this.data); 
+        this.$router.push('/Login');              
       },
       showPassword () {
         if (this.showPass === false) {
@@ -152,17 +147,29 @@ export default defineComponent({
       },      
     },
     setup() {
-      const pWait = ref(false);
-      const plaseWait = (state: any) => (pWait.value = state);
-      const nPass = ref(false);
-      const newPass = (state: any) => (nPass.value = state);
+      const showLoading = async (msj: any, type: boolean) => {
+          if (type === false) {
+            const loading = await loadingController.create({
+                message: msj,
+                duration: 1000
+            });
+            loading.present();
+            return 0;
+          }
+          const alert = await alertController.create({
+              // header: 'Error',
+              // subHeader: 'Important message',
+              message: msj,
+              buttons: ['OK'],
+          });
+          await alert.present();
+      }
       const erroP = ref(false);
       const errorPass = (state: any) => (erroP.value = state);        
       return {
-        logoIonic, arrowBackSharp, eye, eyeOff,
-        pWait, plaseWait,
+        lockClosed, arrowBackSharp, eye, eyeOff,
         erroP, errorPass,
-        nPass, newPass
+        showLoading
       };
     },
 });

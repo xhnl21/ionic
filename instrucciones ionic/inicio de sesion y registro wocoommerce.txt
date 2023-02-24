@@ -7,41 +7,19 @@ module.exports = {
 };
 
 
-En el archivo app.js o index.js de tu aplicación Node.js, utiliza la biblioteca Express para crear una API de inicio de sesión y registro:
+url
+hearders
+// para iniciar sesion
+ { 
+  email, 
+  password 
+ } 
+response
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const WooCommerceAPI = require('woocommerce-api');
-const config = require('./config');
-
-const app = express();
-const WooCommerce = new WooCommerceAPI(config);
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-
-  WooCommerce.get('customers', { email: username }, (err, data, response) => {
-    if (err) {
-      res.status(500).json({ error: err });
-    } else {
-      const customer = JSON.parse(response.body)[0];
-
-      if (customer && customer.id && customer.email === username && customer.password === password) {
-        res.status(200).json({ message: 'Login successful' });
-      } else {
-        res.status(401).json({ message: 'Invalid credentials' });
-      }
-    }
-  });
-});
-
-app.post('/api/register', (req, res) => {
-  const { email, password } = req.body;
-
-  const customerData = {
+url
+hearders
+// para registrar
+{
     email: email,
     password: password,
     first_name: '',
@@ -50,16 +28,5 @@ app.post('/api/register', (req, res) => {
     billing: {},
     shipping: {},
   };
-
-  WooCommerce.post('customers', customerData, (err, data, response) => {
-    if (err) {
-      res.status(500).json({ error: err });
-    } else {
-      res.status(201).json({ message: 'Registration successful' });
-    }
-  });
-});
-
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+response
+  

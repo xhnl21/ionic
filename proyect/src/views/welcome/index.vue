@@ -3,12 +3,13 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-button>
+            <ion-menu-button color="primary"></ion-menu-button>
+          </ion-button>   
         </ion-buttons>
-        <!-- <menus></menus> -->
         <ion-title text-center style="text-align: center;">MiAutoBox</ion-title>
         <ion-buttons slot="end" >
-          <ion-button router-link="/Welcome">
+          <ion-button router-link="/Login">
             <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
           </ion-button>
           <ion-button router-link="/Welcome">
@@ -17,29 +18,76 @@
           <ion-button router-link="/Welcome">
             <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
           </ion-button>                    
-        </ion-buttons> 
+        </ion-buttons>         
       </ion-toolbar>
-    </ion-header>
+    </ion-header>    
     <ion-content class="no-scroll">
-      welcome
-    </ion-content>    
+      <div id="container">
+        <form @submit.prevent="validate">
+          <ion-grid>
+            <div class="space"></div>
+            <div class="space"></div>
+            <ion-row>
+              <ion-col>
+                <small style="text-align: center;">
+                  <h1>Welcome</h1>                  
+                </small>
+              </ion-col>
+            </ion-row>       
+          </ion-grid>          
+        </form>
+      </div>
+    </ion-content>
   </ion-page>
 </template>
-<script>
-// import menus from "../../custom/components/menu.vue";
-import { notificationsOutline, searchOutline, cartOutline } from 'ionicons/icons';
+<script lang="ts">
+import { loadingController, alertController } from '@ionic/vue';
+import { searchOutline, notificationsOutline, cartOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 export default defineComponent({
-    // components: {menus},
+    components: {},
     data () {
-        return {}
+        return {
+            showPass:false,
+            showPassA:false,
+            data: {
+                pass:"",
+                cpass:"",
+            }
+        }
     },
-    methods: {},
-    setup() {       
-      // console.log(menus);
-      return { 
-        notificationsOutline, searchOutline, cartOutline, 
-        // menus
+    methods: {
+      validate () {
+        this.showLoading("demo", false);                
+        setTimeout(() => {
+          this.form();
+        }, 2000);
+      }, 
+      form () {
+          console.log("demoA");
+      }, 
+    },
+    setup() {
+      const showLoading = async (msj: any, type: boolean) => {
+          if (type === false) {
+            const loading = await loadingController.create({
+                message: msj,
+                duration: 1000
+            });
+            loading.present();
+            return 0;
+          }
+          const alert = await alertController.create({
+              // header: 'Error',
+              // subHeader: 'Important message',
+              message: msj,
+              buttons: ['OK'],
+          });
+          await alert.present();
+      }
+      return {
+        showLoading,
+        searchOutline, notificationsOutline, cartOutline,
       };
     },
 });
@@ -54,8 +102,13 @@ export default defineComponent({
   }
   #container {
     position: absolute;
+    /* top: 50%; */
     left: 10%;
-    margin: -25px 0 0 0;
-    width: 80%;
+    margin: -25px 0 0 -25px;
+    /* transform: translateY(-50%); */
+    width: 90%;
+  }
+  #container a {
+    text-decoration: none;
   }
 </style>

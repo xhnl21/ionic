@@ -20,13 +20,15 @@
     </ion-header>
     <ion-content class="no-scroll">
       <div id="container" style="position: relative;">
-        <form @submit.prevent="form">
+        <form @submit.prevent="validate">
           <ion-grid>
             <ion-row>
               <ion-col>
                 <ion-item>
                   <ion-label position="stacked">Enter Email Address / Mobile Number</ion-label>
-                  <ion-input fill="outline" type="email" required v-model="data.email"></ion-input>   
+                  <ion-input fill="outline" type="email" required v-model="data.email">
+                    <ion-icon :ios="person" :md="person" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
+                  </ion-input>   
                 </ion-item>   
               </ion-col>
             </ion-row>
@@ -34,8 +36,9 @@
               <ion-col>
                 <ion-item v-if="showPass === false">
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="password" required v-model="data.pass">  
-                  </ion-input> 
+                    <ion-input fill="outline" type="password" required v-model="data.pass">
+                      <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
+                    </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
                       <ion-icon :ios="eye" :md="eye"></ion-icon>
@@ -44,7 +47,8 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="text" required v-model="data.pass">  
+                  <ion-input fill="outline" type="text" required v-model="data.pass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -61,7 +65,10 @@
             </ion-row>   
             <ion-row>
               <ion-col>
-                <ion-button type="submit" color="light" expand="full">Log In</ion-button>   
+                <ion-button type="submit" color="light" expand="full">
+                  <ion-icon :ios="logIn" :md="logIn" slot="start" item-start class="text-primary"></ion-icon>
+                  Log In
+                </ion-button>   
               </ion-col>
             </ion-row>  
             <ion-row>
@@ -93,20 +100,15 @@
             </ion-row>          
           </ion-grid>
         </form>
-        <ion-alert
-          :is-open="pWait"
-          message="Please wait..."
-          @didDismiss="plaseWait(false)"
-        >
-        </ion-alert>
       </div>
     </ion-content>
   </ion-page>
 </template>
 <script>
-import { arrowBackSharp, eye, eyeOff, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
+import { loadingController, alertController } from '@ionic/vue';
+import { arrowBackSharp, eye, eyeOff, lockClosed, logIn, person, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
 // import { onMounted } from "vue"
-import { ref } from "vue"
+// import { ref } from "vue"
 export default {
   data () {
       return {
@@ -118,8 +120,15 @@ export default {
       }
   },
   methods: {
+    validate () {
+        this.showLoading("Please wait...", false);                
+        setTimeout(() => {
+          this.form();
+        }, 2000);
+    }, 
     form () {
-      console.log(this.data);  
+        console.log("demoA");
+        this.$router.push('/Welcome');
     },
     showPassword () {
       if (this.showPass === false) {
@@ -130,9 +139,23 @@ export default {
     },
   },
   setup() {
-    // const iconsx = ref(null)
-    const pWait = ref(false);
-    const plaseWait = (state) => (pWait.value = state);
+    const showLoading = async (msj, type) => {
+          if (type === false) {
+            const loading = await loadingController.create({
+                message: msj,
+                duration: 1000
+            });
+            loading.present();
+            return 0;
+          }
+          const alert = await alertController.create({
+              // header: 'Error',
+              // subHeader: 'Important message',
+              message: msj,
+              buttons: ['OK'],
+          });
+          await alert.present();
+      }
 //     onMounted(() => {
 //       // const id = iconsx.value.$el.id
 //       // const icons = window.icons;
@@ -179,8 +202,8 @@ export default {
 //     });
     return {
       // iconsx,
-      arrowBackSharp, eye, eyeOff, fingerPrintOutline, logoGoogle, logoFacebook,
-      pWait, plaseWait,
+      arrowBackSharp, eye, lockClosed, eyeOff, person, logIn, fingerPrintOutline, logoGoogle, logoFacebook,
+      showLoading,
     }
   }
 };

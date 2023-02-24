@@ -3,11 +3,11 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/Login'
+    redirect: '/Settings'
   },
   {
-    path: '/Login',
-    component: () => import ('../../views/login/index.vue')
+    path: '/Settings',
+    component: () => import ('../../views/settings/index.vue')
   }
 ]
 

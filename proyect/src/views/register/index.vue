@@ -12,23 +12,25 @@
     </ion-header>
     <ion-content class="no-scroll">
       <div id="container">
-        <form  @submit.prevent="form">
+        <form  @submit.prevent="validate">
           <ion-grid>
             <div class="space"></div>
             <div class="space"></div>
             <ion-row>
               <ion-col>
-                <ion-item lines="full">
+                <ion-item>
                   <ion-label position="stacked">Full Name</ion-label>
-                  <ion-input type="text" v-model="data.fname"></ion-input>
+                  <ion-input type="text" v-model="data.fname" ref="fname">
+                  <ion-icon :ios="person" :md="person" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;</ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>            
             <ion-row>
               <ion-col>
-                <ion-item lines="full">
+                <ion-item>
                   <ion-label position="stacked">Email Address / Mobile Number</ion-label>
-                  <ion-input type="text" v-model="data.email"></ion-input>
+                  <ion-input type="text" v-model="data.email">
+                  <ion-icon :ios="person" :md="person" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;</ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -36,7 +38,8 @@
               <ion-col>
                 <ion-item v-if="showPass === false">
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="password" required v-model="data.pass">  
+                  <ion-input fill="outline" type="password" v-model="data.pass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -46,7 +49,8 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Enter Password</ion-label> 
-                    <ion-input fill="outline" type="text" required v-model="data.pass">  
+                  <ion-input fill="outline" type="text" v-model="data.pass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -60,7 +64,8 @@
               <ion-col>
                 <ion-item v-if="showPassA === false">
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                    <ion-input fill="outline" type="password" required v-model="data.cpass">  
+                  <ion-input fill="outline" type="password" v-model="data.cpass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPasswordA">
@@ -70,7 +75,8 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                    <ion-input fill="outline" type="text" required v-model="data.cpass">  
+                  <ion-input fill="outline" type="text" v-model="data.cpass">
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPasswordA">
@@ -83,7 +89,7 @@
             <ion-row>
               <ion-col>
                 <ion-item>
-                  <ion-checkbox slot="start" expand="full" required v-model="data.privacity"></ion-checkbox>
+                  <ion-checkbox slot="start" expand="full" v-model="data.privacity"></ion-checkbox>
                   <ion-label>
                     <p style="font-size: 10px;line-height: 120%;">
                       By Login in you agree to our Terms & <br> Condition and Privaticy Policy 
@@ -107,69 +113,15 @@
             </ion-row>                 
           </ion-grid>         
         </form>
-      </div>
-      <ion-alert
-        :is-open="pWait"
-        message="Please wait..."
-        @didDismiss="plaseWait(false)"
-      >
-      </ion-alert>
-      <ion-alert
-        :is-open="fName"
-        message="Please, the full name field must not be empty."
-        :buttons="['OK']"
-        @didDismiss="plaseFname(false)"
-      >
-      </ion-alert>      
-      <ion-alert
-        :is-open="nPass"
-        message="Please enter your password."
-        :buttons="['OK']"
-        @didDismiss="newPass(false)"
-      >
-      </ion-alert> 
-      <ion-alert
-        :is-open="erroP"
-        message="your password does not match the confirmation"
-        :buttons="['OK']"
-        @didDismiss="errorPass(false)"
-      >
-      </ion-alert>   
-      <ion-alert
-        :is-open="erroE"
-        message="Please Enter Email Address / Mobile Number."
-        :buttons="['OK']"
-        @didDismiss="erroEmail(false)"
-      >
-      </ion-alert>  
-      <ion-alert
-        :is-open="nPass"
-        message="Please enter your password."
-        :buttons="['OK']"
-        @didDismiss="newPass(false)"
-      >
-      </ion-alert> 
-      <ion-alert
-        :is-open="erroP"
-        message="your password does not match the confirmation"
-        :buttons="['OK']"
-        @didDismiss="errorPass(false)"
-      >
-      </ion-alert>
-      <ion-alert
-          :is-open="priv"
-          message="Please you must accept the terms and conditions."
-          :buttons="['OK']"
-          @didDismiss="privacitys(false)"
-        >
-      </ion-alert>                         
+      </div>                         
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { eye, eyeOff, arrowBackSharp } from 'ionicons/icons';
-import { defineComponent, ref } from 'vue';
+import { loadingController, alertController } from '@ionic/vue';
+import { eye, eyeOff, arrowBackSharp, lockClosed, person } from 'ionicons/icons';
+import { defineComponent } from 'vue';
 export default defineComponent({
     components: { },
     data () {
@@ -186,30 +138,42 @@ export default defineComponent({
         }
     },
     methods: {
+      validate () {
+          var msj = "Please wait..."
+          if (this.data.fname === "") {
+            msj = "Please, the full name field must not be empty."
+            this.showLoading(msj, false); 
+            return 0;
+          }
+          if (this.data.email === "") {
+            msj = "Please Enter Email Address / Mobile Number."
+            this.showLoading(msj, false);  
+            return 0;
+          } 
+          if (this.data.pass === "" || this.data.cpass === "") {
+            msj = "Please enter your password."
+            this.showLoading(msj, false);  
+            return 0;
+          }else {
+              if (this.data.pass !== this.data.cpass) {
+                  msj = "your password does not match the confirmation"
+                  this.showLoading(msj, false);
+                  return 0;
+              }
+          }
+          if (this.data.privacity === false) {
+              msj = "Please you must accept the terms and conditions."
+              this.showLoading(msj, false);
+              return 0;
+          }    
+          this.showLoading(msj, false);          
+          setTimeout(() => {
+            this.form();
+          }, 2000);
+      },       
       form () {
-        console.log(this.data.fname);
-        if (this.data.fname === "") {
-          this.plaseFname(true);
-        }
-        if (this.data.email === "") {
-          this.erroEmail(true);
-        } 
-        if (this.data.pass === "" || this.data.cpass === "") {
-          this.newPass(true);
-        }else {
-            if (this.data.pass === this.data.cpass) {
-              console.log(this.data);
-              
-            } else {
-                this.errorPass(true);
-            }
-        }
-        if (this.data.privacity === false) {
-          this.privacitys(true);
-        } else {
-          this.plaseWait(true);
-          this.$router.push('/Opt');
-        }                
+        console.log(this.data.fname); 
+        this.$router.push('/Opt');              
       },
       showPassword () {
         if (this.showPass === false) {
@@ -227,26 +191,26 @@ export default defineComponent({
       },       
     },
     setup() {
-      const pWait = ref(false);
-      const plaseWait = (state: any) => (pWait.value = state);
-      const nPass = ref(false);
-      const newPass = (state: any) => (nPass.value = state);
-      const erroP = ref(false);
-      const errorPass = (state: any) => (erroP.value = state);
-      const fName = ref(false);
-      const plaseFname = (state: any) => (fName.value = state);
-      const erroE = ref(false);
-      const erroEmail = (state: any) => (erroE.value = state);
-      const priv = ref(false);
-      const privacitys = (state: any) => (priv.value = state);
+      const showLoading = async (msj: any, type: boolean) => {
+          if (type === false) {
+            const loading = await loadingController.create({
+                message: msj,
+                duration: 1000
+            });
+            loading.present();
+            return 0;
+          }
+          const alert = await alertController.create({
+              // header: 'Error',
+              // subHeader: 'Important message',
+              message: msj,
+              buttons: ['OK'],
+          });
+          await alert.present();
+      }
       return {
-        eye, eyeOff, arrowBackSharp,
-        pWait, plaseWait,
-        erroP, errorPass,
-        nPass, newPass,  
-        fName, plaseFname,
-        erroE, erroEmail,
-        priv, privacitys
+        eye, eyeOff, arrowBackSharp, lockClosed, person,
+        showLoading
       };
     },
 });
