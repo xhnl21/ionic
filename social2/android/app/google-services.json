@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "684898322638",
+    "project_id": "loginsocial2-864cb",
+    "storage_bucket": "loginsocial2-864cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684898322638:android:ad972c556b6d2d65afa89f",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684898322638-ii25lgt2itbb968saasee2b9hoqv6cg1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "3c61f188d9f15c8327d74f35413c57b5f0514310"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHfCMvMk2R_CxPKcUxD7XtDPBsvGT3aZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684898322638-trlo32dvpb2m2c03hhk3t2eqvf8ainth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

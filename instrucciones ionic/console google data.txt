@@ -1,0 +1,26 @@
+nombre del proyecto: LoginSocial2
+Nombre del paquete de Android: io.ionic.starter
+Sobrenombre de la app: social2
+Certificado de firma SHA-1 de depuración: 3C:61:F1:88:D9:F1:5C:83:27:D7:4F:35:41:3C:57:B5:F0:51:43:10
+
+Archivo de Gradle de nivel de raíz (nivel de proyecto) (<project>/build.gradle):
+  dependencies {
+    ...
+    // Add the dependency for the Google services Gradle plugin
+    classpath 'com.google.gms:google-services:4.3.15'
+
+  }
+Archivo de Gradle del módulo (nivel de app) (<project>/<app-module>/build.gradle):
+id 'com.google.gms.google-services'
+dependencies {
+  // Import the Firebase BoM
+  implementation platform('com.google.firebase:firebase-bom:31.2.2')
+
+
+  // TODO: Add the dependencies for Firebase products you want to use
+  // When using the BoM, don't specify versions in Firebase dependencies
+  // https://firebase.google.com/docs/android/setup#available-libraries
+}
+
+Nombre público del proyecto: project-684898322638
+
