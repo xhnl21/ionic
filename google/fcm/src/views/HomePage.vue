@@ -38,6 +38,8 @@ SHA1: 7B:1F:76:3E:E8:2B:AE:BE:30:D8:04:1C:9D:AD:06:7E:1B:CB:5D:B8
 nombre del proyecto
 project-945665940922
  -->
+ <!-- ionic plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=236045340364-qrjn93bngvjaa78kk46b8doii6296t0j.apps.googleusercontent.com
+npm install --save @ionic-native/google-plus -->
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { ref , defineComponent } from 'vue'

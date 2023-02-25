@@ -1,69 +1,124 @@
-<script setup>
-//  https://www.youtube.com/watch?v=qMFytZ-JI9g
-// https://yobaji.github.io/vue3-google-login/#custom-button-as-slot
-// import { onMounted } from "vue"
-// import { googleLogout, googleOneTap, googleAuthCodeLogin, googleTokenLogin } from "vue3-google-login"
-import { googleSdkLoaded } from "vue3-google-login"
-// const login = () => {
-//   googleAuthCodeLogin().then((response) => {
-//     console.log("Handle the response", response)
-//   })
-// }
-// const login = () => {
-//   googleTokenLogin().then((response) => {
-//     console.log("Handle the response", response)
-//   })
-// }
-// onMounted(() => {
-//   googleOneTap({ autoLogin: true })
-//     .then((response) => {
-//       // This promise is resolved when user selects an account from the the One Tap prompt
-//       console.log("Handle the response", response)
-//     })
-//     .catch((error) => {
-//       console.log("Handle the error", error)
-//     })
-// })
-const login = () => {
-  googleSdkLoaded((google) => {
-    google.accounts.oauth2.initCodeClient({
-      client_id: '64349569579-ebh4v58m5i1v7f15t82b5p1b61grqdca.apps.googleusercontent.com',
-      // secret_client: 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
-      scope: 'email profile openid',
-      prompt: 'consent',
-      fetch_basic_profile:true,
-      enable_serial_consent:true,
-      callback: (response) => {
-        console.log("Handle the response", response)
-        console.log("Handle the userData")
-      }
-    }).requestCode()
-  })
-}
-const onSignIn = (googleUser) => {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-const yourLogoutFunction = () => {
-  // your logout logics
-  // googleLogout()
-  googleSdkLoaded((google) => {
-    google.accounts.id.revoke("xhnl21@gmail.com")
-  })
-}
+<template>
+  <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar>
+        <ion-title>Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-// const callback = (response) => {
-//   console.log("Handle the response", response)
+    <ion-content :fullscreen="true">
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">Blank</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <div id="container">
+        <button @click="login">Login Using Google</button>
+        <br><br><br>
+        <GoogleLogin :callback="callback"/>
+        <br>
+        <ion-item v-if="data.email_verified">
+          <ion-avatar slot="start">
+            <img :src=data.picture />
+          </ion-avatar>
+          <ion-label>{{ data.name }}</ion-label>
+          <ion-label>{{ data.email }}</ion-label>
+        </ion-item>
+      </div>
+    </ion-content>
+  </ion-page>
+</template>
+
+<script>
+// https://www.youtube.com/watch?v=hQ5aqvTEqxU
+// https://developers.google.com/identity/openid-connect/openid-connect?hl=es-419#sendauthrequest
+import { IonLabel, IonAvatar, IonItem, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { googleSdkLoaded, decodeCredential } from 'vue3-google-login'
+import { defineComponent } from 'vue';
+export default defineComponent({
+  components: { IonLabel, IonAvatar, IonItem, IonContent, IonHeader, IonPage, IonTitle, IonToolbar },
+    data () {
+        return {
+            showPass:false,
+            showPassA:false,
+            data: {
+                email_verified:false,
+                name:"",
+                email:"",
+                picture:"",
+            }
+        }
+    },
+    methods: {  
+      login () {
+        googleSdkLoaded((google) => {
+          google.accounts.oauth2.initCodeClient({
+            client_id: '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleusercontent.com',
+            scope: 'openid profile email',
+            enable_serial_consent:true,
+            login_hint:true,
+            callback: (response) => {
+              console.log("Handle the response", response)
+            }
+          }).requestCode()
+        })
+      },  
+      form () {
+        console.log("demo");              
+      },   
+      callback (response) {
+        const userData = decodeCredential(response.credential)
+        console.log("Handle the userData", userData)
+        this.data.email = userData.email;
+        this.data.email_verified = userData.email_verified;
+        this.data.name = userData.name;
+        this.data.picture = userData.picture;
+      }   
+    },
+    setup() {
+      return {
+        // callback
+      };
+    },
+});
+// const callback = (response:any) => {
+//   // decodeCredential will retrive the JWT payload from the credential
+//   const userData = decodeCredential(response.credential)
+//   console.log("Handle the userData", userData)
+//   // this.data.email = userData.email;
+//   // this.data.email_verified = userData.email_verified;
+//   // this.data.name = userData.name;
+//   // this.data.picture = userData.picture;
 // }
 </script>
-<template>
-  <!-- <div>One-Tap prompt will be shown once this component is mounted</div> -->
-  <!-- <GoogleLogin :callback="callback"/> -->
-  <br><br>
-  <button @click="login">Login Using Google</button><br>
-  <button @click="yourLogoutFunction">Logout</button><br>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-</template>
+
+<style scoped>
+#container {
+  text-align: center;
+  
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  
+  color: #8c8c8c;
+  
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+</style>
