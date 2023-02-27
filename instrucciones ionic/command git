@@ -1,0 +1,7 @@
+git clone https://github.com/xhnl21/ionic.git => para clonar el proyecto de github
+git pull origin main => para bajar cambios de github
+git status => para los cambios realizado en el proyecto
+git restore path_file => para restablecer los cambio de un documento, path_file = es la ruta
+git add . => para agregar nuevos cambios a la rama main
+git commit -m "new msj" => para agregar un mensaje al cambio que se esta agregando
+git push origin main => para bajar cambios de github
