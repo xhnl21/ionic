@@ -4,4 +4,5 @@
     <string name="title_activity_main">fcm</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="server_client_id">684898322638-ii25lgt2itbb968saasee2b9hoqv6cg1.apps.googleusercontent.com</string>
 </resources>

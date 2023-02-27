@@ -6,9 +6,15 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   plugins: {
-    PushNotifications: {
-      presentationOptions: ["badge", "sound", "alert"],
-    },
+    GoogleAuth: {
+      scopes: [
+        "profile",
+        "email"
+      ],
+      // serverClientId: "684898322638-trlo32dvpb2m2c03hhk3t2eqvf8ainth.apps.googleusercontent.com",
+      serverClientId: "684898322638-ii25lgt2itbb968saasee2b9hoqv6cg1.apps.googleusercontent.com",
+      forceCodeForRefreshToken: true
+    }    
   },
 };
 

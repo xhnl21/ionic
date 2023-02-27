@@ -15,13 +15,13 @@
             <img :src="imageUrl" width="200">
           </div>
           <div>
-            <v-btn v-if="!signedIn" ion-button color="dark" @click="signinGoogle()">
+            <ion-button v-if="!signedIn" color="dark" @click="signinGoogle()">
               Sign in
-            </v-btn>
+            </ion-button>
 
-            <v-btn v-if="signedIn" ion-button color="dark" @click="signoutGoogle()">
+            <ion-button v-if="signedIn" color="dark" @click="signoutGoogle()">
               Sign out
-            </v-btn>
+            </ion-button>
           </div>
         </form>
       </div>
@@ -41,10 +41,11 @@ project-945665940922
  <!-- ionic plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=236045340364-qrjn93bngvjaa78kk46b8doii6296t0j.apps.googleusercontent.com
 npm install --save @ionic-native/google-plus -->
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { ref , defineComponent } from 'vue'
 import { GooglePlus } from '@ionic-native/google-plus'
 export default defineComponent({
+  components: { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar },
   setup() {
     const signedIn = ref(false)
     const userId = ref('')
@@ -55,7 +56,10 @@ export default defineComponent({
     // #region Methods
     const signinGoogle = () => {
 
-      GooglePlus.login({})
+      GooglePlus.login({
+        webClientId:'684898322638-trlo32dvpb2m2c03hhk3t2eqvf8ainth.apps.googleusercontent.com',
+        offline:true
+      })
       .then((user) => {
         console.log('user', user)
         userId.value = user.userId

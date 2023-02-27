@@ -9,17 +9,9 @@ import java.util.ArrayList;
 import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
 
 public class MainActivity extends BridgeActivity {
-    @Override
     public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-        // Additional plugins you've installed go here
-        add(GoogleAuth.class);
-    }});
-  }
-
-    private void init(Bundle savedInstanceState, ArrayList<Class<? extends Plugin>> classes) {
+        super.onCreate(savedInstanceState);
+        registerPlugin(GoogleAuth.class);
+        // Initializes the Bridge
     }
 }

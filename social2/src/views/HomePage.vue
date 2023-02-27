@@ -53,6 +53,7 @@ import { IonCardContent, IonCard, IonButton, IonContent, IonHeader, IonPage, Ion
 import { defineComponent, onMounted } from 'vue';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { loadingController, alertController } from '@ionic/vue';
+import { Plugins } from '@capacitor/core';
 export default defineComponent({
   components: { IonCardContent, IonCard, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar },
   data () {
@@ -60,6 +61,7 @@ export default defineComponent({
         dt:null
         }
     },
+    
     methods: { 
       async googleSignup () {
         const response = await GoogleAuth.signIn();
@@ -67,7 +69,14 @@ export default defineComponent({
         this.dt = response
         this.showLoading(response.email, false); 
         alert(response.email)            
-      },       
+      }, 
+      async googleSignup2 () {
+        const response = await Plugins.GoogleAuth.signIn();
+        console.log(response);
+        this.dt = response
+        this.showLoading(response.email, false); 
+        alert(response.email)            
+      },             
     },    
   setup() {
     onMounted(() => {

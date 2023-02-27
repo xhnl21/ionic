@@ -1,42 +1,37 @@
 {
   "project_info": {
-    "project_number": "945665940922",
-    "firebase_url": "https://furion-73b93.firebaseio.com",
-    "project_id": "furion-73b93",
-    "storage_bucket": "furion-73b93.appspot.com"
+    "project_number": "684898322638",
+    "project_id": "loginsocial2-864cb",
+    "storage_bucket": "loginsocial2-864cb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945665940922:android:283643c07dcd9a0519d183",
+        "mobilesdk_app_id": "1:684898322638:android:ad972c556b6d2d65afa89f",
         "android_client_info": {
-          "package_name": "demo.Furion"
+          "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "945665940922-urlcrdoqjrnl8q0d0buj188kjjh1p62g.apps.googleusercontent.com",
+          "client_id": "684898322638-ii25lgt2itbb968saasee2b9hoqv6cg1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "demo.Furion",
-            "certificate_hash": "7b1f763ee82baebe30d8041c9dad067e1bcb5db8"
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "3c61f188d9f15c8327d74f35413c57b5f0514310"
           }
-        },
-        {
-          "client_id": "945665940922-68mcvbfn89519cm8j6lvb9ntnt669tt8.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDuXHoGXerPu5SMIcCzo4QU7gnqA7GZiLg"
+          "current_key": "AIzaSyDHfCMvMk2R_CxPKcUxD7XtDPBsvGT3aZI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "945665940922-68mcvbfn89519cm8j6lvb9ntnt669tt8.apps.googleusercontent.com",
+              "client_id": "684898322638-trlo32dvpb2m2c03hhk3t2eqvf8ainth.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
