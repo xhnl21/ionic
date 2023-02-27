@@ -2,7 +2,7 @@
   <ion-app>
     <ion-split-pane content-id="main-content">
       <ion-menu content-id="main-content" type="overlay">
-        <ion-content>
+        <ion-content class="no-scroll">
           <ion-list id="inbox-list">
             <div class="space"></div>
             <ion-avatar style="margin: auto;">
@@ -11,7 +11,7 @@
             <ion-note text-center style="margin: auto; display: table;">hi@ionicframework.com</ion-note>
             <div class="space"></div>
             <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
-              <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
+              <ion-item @click="selectedIndex = i" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
                 <ion-icon slot="start" :ios="p.iosIcon" :md="p.mdIcon"></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
@@ -31,7 +31,6 @@ import {
   logOut,
   tv,
   home,
-  logIn,
 } from 'ionicons/icons';
 
 const ImgProfile = process.env.BASE_URL+"assets/tutorial/a.jpg";
@@ -50,12 +49,6 @@ const appPages = [
     mdIcon: tv,
   },
   {
-    title: 'Login',
-    url: '/Login',
-    iosIcon: logIn,
-    mdIcon: logIn,
-  },
-  {
     title: 'Settings',
     url: '/Settings',
     iosIcon: settings,
@@ -63,7 +56,7 @@ const appPages = [
   },
   {
     title: 'Log Out',
-    url: '/folder/Archived',
+    url: '/Login',
     iosIcon: logOut,
     mdIcon: logOut,
   },
@@ -85,6 +78,9 @@ if (path !== undefined) {
 </script>
 
 <style scoped>
+  .no-scroll {
+    --overflow: hidden;
+  }
   .space {
     height: 25px;
   }

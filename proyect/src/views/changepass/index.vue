@@ -3,43 +3,34 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button router-link="/Login">
+          <ion-button router-link="/Settings">
             <ion-icon :ios="arrowBackSharp" :md="arrowBackSharp"></ion-icon>
           </ion-button>   
         </ion-buttons>
-        <ion-title text-center style="text-align: center;">Create Account</ion-title>
+        <ion-title text-center style="text-align: center;">Change Password</ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header>    
     <ion-content class="no-scroll">
       <div id="container">
-        <form  @submit.prevent="validate">
+        <form @submit.prevent="validate">
           <ion-grid>
             <div class="space"></div>
             <div class="space"></div>
             <ion-row>
               <ion-col>
-                <ion-item>
-                  <ion-label position="stacked">Full Name</ion-label>
-                  <ion-input type="text" v-model="data.fname" ref="fname">
-                  <ion-icon :ios="person" :md="person" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;</ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>            
-            <ion-row>
-              <ion-col>
-                <ion-item>
-                  <ion-label position="stacked">Email Address / Mobile Number</ion-label>
-                  <ion-input type="text" v-model="data.email">
-                  <ion-icon :ios="person" :md="person" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;</ion-input>
-                </ion-item>
+                <small style="text-align: center;">
+                  Please set your new password.
+                </small>    
               </ion-col>
             </ion-row>
+            <div class="space"></div>
+            <div class="space"></div>
             <ion-row>
               <ion-col>
                 <ion-item v-if="showPass === false">
                   <ion-label position="stacked">Enter Password</ion-label> 
                   <ion-input fill="outline" type="password" v-model="data.pass">
-                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
+                    <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;  
                   </ion-input> 
                   <ion-buttons slot="end">
                     <ion-button @click="showPassword">
@@ -64,7 +55,7 @@
               <ion-col>
                 <ion-item v-if="showPassA === false">
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                  <ion-input fill="outline" type="password" v-model="data.cpass">
+                  <ion-input fill="outline" type="password" v-model="data.cpass"> 
                     <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
@@ -75,7 +66,7 @@
                 </ion-item>  
                 <ion-item v-else>
                   <ion-label position="stacked">Confirm Password</ion-label> 
-                  <ion-input fill="outline" type="text" v-model="data.cpass">
+                  <ion-input fill="outline" type="text" v-model="data.cpass">  
                     <ion-icon :ios="lockClosed" :md="lockClosed" item-start class="text-primary"></ion-icon>&nbsp;&nbsp;
                   </ion-input> 
                   <ion-buttons slot="end">
@@ -85,71 +76,41 @@
                   </ion-buttons>
                 </ion-item>                    
               </ion-col>
-            </ion-row>
+            </ion-row>              
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>              
             <ion-row>
               <ion-col>
-                <ion-item>
-                  <ion-checkbox slot="start" expand="full" v-model="data.privacity"></ion-checkbox>
-                  <ion-label>
-                    <p style="font-size: 10px;line-height: 120%;">
-                      By Login in you agree to our Terms & <br> Condition and Privaticy Policy 
-                    </p>              
-                  </ion-label>
-                </ion-item> 
+                <ion-button type="submit" color="light" expand="full" shape="round">Change Password</ion-button>
               </ion-col>
-            </ion-row>                         
-            <div class="space"></div>   
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="space"></div>          
-            <ion-row>
-              <ion-col>
-                <ion-button type="submit" color="light" expand="full" shape="round">Create</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button router-link="/Login" color="light" expand="full" shape="round">Cancel</ion-button>
-              </ion-col>
-            </ion-row>                 
-          </ion-grid>         
+            </ion-row>        
+          </ion-grid>          
         </form>
-      </div>                         
+      </div>     
     </ion-content>
   </ion-page>
 </template>
-
 <script lang="ts">
 import { loadingController, alertController } from '@ionic/vue';
-import { eye, eyeOff, arrowBackSharp, lockClosed, person } from 'ionicons/icons';
-import { defineComponent } from 'vue';
+import { lockClosed, arrowBackSharp, eye, eyeOff, } from 'ionicons/icons';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
-    components: { },
+    components: {},
     data () {
         return {
             showPass:false,
             showPassA:false,
             data: {
-                fname:"",
-                email:"",
                 pass:"",
                 cpass:"",
-                privacity:false
             }
         }
     },
     methods: {
       validate () {
-          var msj = "Please wait..."
-          if (this.data.fname === "") {
-            msj = "Please, the full name field must not be empty."
-            this.showLoading(msj, false); 
-            return 0;
-          }
-          if (this.data.email === "") {
-            msj = "Please Enter Email Address / Mobile Number."
-            this.showLoading(msj, false);  
-            return 0;
-          } 
+          var msj = "Please wait..."        
           if (this.data.pass === "" || this.data.cpass === "") {
             msj = "Please enter your password."
             this.showLoading(msj, false);  
@@ -160,20 +121,15 @@ export default defineComponent({
                   this.showLoading(msj, false);
                   return 0;
               }
-          }
-          if (this.data.privacity === false) {
-              msj = "Please you must accept the terms and conditions."
-              this.showLoading(msj, false);
-              return 0;
-          }    
+          }  
           this.showLoading(msj, false);          
           setTimeout(() => {
             this.form();
           }, 2000);
       },       
       form () {
-        console.log(this.data.fname); 
-        this.$router.push('/Opt');              
+        console.log(this.data); 
+        this.$router.push('/Settings');              
       },
       showPassword () {
         if (this.showPass === false) {
@@ -188,7 +144,7 @@ export default defineComponent({
         } else {
           this.showPassA = false;
         }
-      },       
+      },      
     },
     setup() {
       const showLoading = async (msj: any, type: boolean) => {
@@ -208,8 +164,11 @@ export default defineComponent({
           });
           await alert.present();
       }
+      const erroP = ref(false);
+      const errorPass = (state: any) => (erroP.value = state);        
       return {
-        eye, eyeOff, arrowBackSharp, lockClosed, person,
+        lockClosed, arrowBackSharp, eye, eyeOff,
+        erroP, errorPass,
         showLoading
       };
     },
@@ -225,8 +184,13 @@ export default defineComponent({
   }
   #container {
     position: absolute;
+    /* top: 50%; */
     left: 10%;
-    margin: -25px 0 0 0;
-    width: 80%;
+    margin: -25px 0 0 -25px;
+    /* transform: translateY(-50%); */
+    width: 90%;
+  }
+  #container a {
+    text-decoration: none;
   }
 </style>

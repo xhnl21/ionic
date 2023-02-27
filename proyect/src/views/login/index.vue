@@ -65,7 +65,7 @@
             </ion-row>   
             <ion-row>
               <ion-col>
-                <ion-button type="submit" color="light" expand="full">
+                <ion-button type="submit" color="light" expand="full" shape="round">
                   <ion-icon :ios="logIn" :md="logIn" slot="start" item-start class="text-primary"></ion-icon>
                   Log In
                 </ion-button>   
@@ -78,7 +78,7 @@
             </ion-row>   
             <ion-row>
               <ion-col>
-                <ion-button color="danger" expand="full">              
+                <ion-button color="danger" expand="full" shape="round">              
                   <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
                   &nbsp;&nbsp; Sign In with Google
                 </ion-button>
@@ -86,7 +86,7 @@
             </ion-row>    
             <ion-row>
               <ion-col>
-                <ion-button color="primary" expand="full">
+                <ion-button color="primary" expand="full" shape="round">
                   <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
                   &nbsp;&nbsp;Sign In with Facebook
                 </ion-button>
@@ -114,7 +114,7 @@ export default {
       return {
           showPass:false,
           data: {
-              email:"xhnl21@gmail.com",
+              email:"miautobox@miautobox.com",
               pass:"123456789",
           }
       }

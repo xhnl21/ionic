@@ -13,14 +13,14 @@
             <ion-row>
               <p style="text-align: justify;">{{ item.text }}</p>
             </ion-row>
-            <ion-button v-if="key === (dataSlider.length - 1)" color="medium" router-link="/Login">Got it</ion-button>
+            <ion-button v-if="key === (dataSlider.length - 1)" color="medium" shape="round" router-link="/Login">Got it</ion-button>
             <!-- <ion-buttons v-if="key === (dataSlider.length - 1)" color="medium" slot="end" router-link="/Login">
               Got it
             </ion-buttons>  -->
             <ion-row class="indicators">
               <div v-for="(items, keys) in dataSlider" :key="items">
-                <ion-button class="btnSlider" v-if="keys === key" color="danger" expand="full"></ion-button>
-                <ion-button class="btnSlider" v-else color="medium" expand="full"></ion-button>
+                <ion-button class="btnSlider" v-if="keys === key" color="danger" shape="round" expand="full"></ion-button>
+                <ion-button class="btnSlider" v-else color="medium" shape="round" expand="full"></ion-button>
               </div>
             </ion-row>
           </ion-grid>

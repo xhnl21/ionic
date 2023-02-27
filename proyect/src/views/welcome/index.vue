@@ -8,7 +8,7 @@
           </ion-button>   
         </ion-buttons>
         <ion-title text-center style="text-align: center;">MiAutoBox</ion-title>
-        <ion-buttons slot="end" >
+        <!-- <ion-buttons slot="end" >
           <ion-button router-link="/Login">
             <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
           </ion-button>
@@ -18,7 +18,7 @@
           <ion-button router-link="/Welcome">
             <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
           </ion-button>                    
-        </ion-buttons>         
+        </ion-buttons>          -->
       </ion-toolbar>
     </ion-header>    
     <ion-content class="no-scroll">

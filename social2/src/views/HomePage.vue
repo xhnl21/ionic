@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-deprecated-filter -->
 <template>
   <ion-page>
     <ion-header :translucent="true">

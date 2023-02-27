@@ -48,12 +48,12 @@
             <div class="space"></div>     
             <ion-row>
               <ion-col>
-                <ion-button type="submit" color="light" expand="full">Verify Code</ion-button>
+                <ion-button type="submit" color="light" expand="full" shape="round">Verify Code</ion-button>
               </ion-col>
             </ion-row> 
             <ion-row> 
               <ion-col>
-                <ion-button type="submit" color="light" expand="full">Resend Code</ion-button>
+                <ion-button type="submit" color="light" expand="full" shape="round">Resend Code</ion-button>
               </ion-col>
             </ion-row>        
           </ion-grid>

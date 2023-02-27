@@ -13,56 +13,44 @@
       <ion-content class="no-scroll">
         <div id="container" style="position: relative;">
           <form @submit.prevent="validate">
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                    <ion-item>
-                        <ion-icon slot="start" :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
-                        <ion-button color="light" expand="full">My Profile</ion-button>
-                    </ion-item>
-                </ion-col>
-              </ion-row>    
-              <ion-row>
-                <ion-col>
-                  <ion-button color="light" expand="full">
-                    <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
-                    &nbsp;&nbsp; Help
-                  </ion-button>
-                </ion-col>
-              </ion-row>  
-              <ion-row>
-                <ion-col>
-                  <ion-button color="light" expand="full">              
-                    <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
-                    &nbsp;&nbsp; Push Notifications
-                  </ion-button>
-                </ion-col>
-              </ion-row>    
-              <ion-row>
-                <ion-col>
-                  <ion-button color="light" expand="full">
-                    <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
-                    &nbsp;&nbsp; Fingerprint ID
-                  </ion-button>
-                </ion-col>
-              </ion-row>  
-              <ion-row>
-                <ion-col>
-                  <ion-button color="light" expand="full">              
-                    <ion-icon :ios="logoGoogle" :md="logoGoogle"></ion-icon> 
-                    &nbsp;&nbsp; Face ID
-                  </ion-button>
-                </ion-col>
-              </ion-row>    
-              <ion-row>
-                <ion-col>
-                  <ion-button color="light" expand="full">
-                    <ion-icon :ios="logoFacebook" :md="logoFacebook"></ion-icon> 
-                    &nbsp;&nbsp; Change Password
-                  </ion-button>
-                </ion-col>
-              </ion-row>                                   
-            </ion-grid>
+            <ion-list lines="full">
+              <ion-item>
+                <ion-icon slot="start" :ios="person" :md="person"></ion-icon>
+                <ion-label>My Profile</ion-label>  
+                <ion-button slot="end" color="light" shape="round" @click="myProfile">
+                  <ion-icon :ios="arrowForward" :md="arrowForward"></ion-icon> 
+                </ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" :ios="helpBuoy" :md="helpBuoy"></ion-icon> 
+                <ion-label>Help</ion-label>  
+                <ion-button slot="end" color="light" shape="round" @click="help">
+                  <ion-icon :ios="arrowForward" :md="arrowForward"></ion-icon> 
+                </ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" :ios="notificationsOutline" :md="notificationsOutline"></ion-icon> 
+                <ion-label>Push Notifications</ion-label>  
+                <ion-toggle slot="end" v-model="noti" v-if="noti === true"  @click="notifications"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" :ios="fingerPrintOutline" :md="fingerPrintOutline"></ion-icon> 
+                <ion-label>FingerPrint Id</ion-label>  
+                <ion-toggle slot="end" v-model="bio" @click="biometric"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" :ios="happyOutline" :md="happyOutline"></ion-icon> 
+                <ion-label>Face Id</ion-label>  
+                <ion-toggle slot="end" v-model="faceId" @click="face"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" :ios="lockClosed" :md="lockClosed"></ion-icon> 
+                <ion-label>Change Password</ion-label>  
+                <ion-button slot="end" color="light" shape="round" @click="changePassword">
+                  <ion-icon :ios="arrowForward" :md="arrowForward"></ion-icon> 
+                </ion-button>
+              </ion-item>                            
+            </ion-list>            
           </form>
         </div>
       </ion-content>
@@ -70,15 +58,13 @@
   </template>
   <script>
   import { loadingController, alertController } from '@ionic/vue';
-  import { arrowBackSharp, eye, eyeOff, lockClosed, logIn, person, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
+  import { arrowForward, happyOutline, notificationsOutline, helpBuoy, arrowBackSharp, eye, eyeOff, lockClosed, logIn, person, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
   export default {
     data () {
         return {
-            showPass:false,
-            data: {
-                email:"xhnl21@gmail.com",
-                pass:"123456789",
-            }
+            noti:true,
+            bio:true,
+            faceId:true,
         }
     },
     methods: {
@@ -99,6 +85,30 @@
           this.showPass = false;
         }
       },
+      changePassword () {
+        this.$router.push('/Changepass');
+      },
+      myProfile () {
+        this.$router.push('/Myprofile');
+      },
+      help () {
+        this.$router.push('/Help');
+      },
+      notifications () {
+        console.log(this.noti);
+        if (this.noti === true) {
+          this.noti = false
+        } else {
+          this.noti = true
+        }
+        // alert("demo")
+      },
+      biometric () {
+        this.$router.push('/Help');
+      },
+      face () {
+        this.$router.push('/Help');
+      },
     },
     setup() {
       const showLoading = async (msj, type) => {
@@ -117,9 +127,9 @@
                 buttons: ['OK'],
             });
             await alert.present();
-        }
+      }
       return {
-        arrowBackSharp, eye, lockClosed, eyeOff, person, logIn, fingerPrintOutline, logoGoogle, logoFacebook,
+        arrowForward, happyOutline,notificationsOutline, helpBuoy, arrowBackSharp, eye, lockClosed, eyeOff, person, logIn, fingerPrintOutline, logoGoogle, logoFacebook,
         showLoading,
       }
     }
@@ -169,7 +179,7 @@
       position: absolute;
       top: 45%;
       margin: 15px 0 0 20px;
-      transform: translateY(-50%);
+      transform: translateY(-90%);
       width: 90%;
     }
     #container a {

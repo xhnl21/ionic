@@ -1,0 +1,33 @@
+Endpoint Metodo POST (creacion de usuario woocommerce)
+
+https://vidatronicvenezuela.com/prueba/wp-json/wc/v3/customers
+
+Header:Content-Type
+
+Value: application/json
+
+Metodo de authenticacion para conexion a woocommerce 
+
+Customer key :   ck_7c319bee94f151a6a3dbf8a4a00cd5acb0b9b017
+Customer secret: cs_67e9142bf177dd02b928dca079a163feef6acc0c
+
+{
+  "email": "usuario@ejemplo5.com",
+  "first_name": "Full name",
+  "password": "contraseña"
+}
+
+Endpoint Metodo POST (Inicio de sesion) 
+
+https://vidatronicvenezuela.com/prueba/wp-json/jwt-auth/v1/token
+
+Header:Content-Type
+
+Value: application/json
+
+{
+  "username": "correo",
+  "password": "clave"
+}
+
+"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZpZGF0cm9uaWN2ZW5lenVlbGEuY29tL3BydWViYSIsImlhdCI6MTY3NzQ5OTcwMCwibmJmIjoxNjc3NDk5NzAwLCJleHAiOjE2NzgxMDQ1MDAsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.Znl5gcDwHFAwnQtpKefSnHxuApZbcr8ffRHFSEsh_sk",
