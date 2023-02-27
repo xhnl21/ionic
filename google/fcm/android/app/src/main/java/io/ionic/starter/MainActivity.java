@@ -1,5 +1,17 @@
 package io.ionic.starter;
 
-import com.getcapacitor.BridgeActivity;
+import android.os.Bundle;
 
-public class MainActivity extends BridgeActivity {}
+import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.Plugin;
+
+import java.util.ArrayList;
+import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
+
+public class MainActivity extends BridgeActivity {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        registerPlugin(GoogleAuth.class);
+        // Initializes the Bridge
+    }
+}
