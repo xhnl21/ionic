@@ -1,7 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import store from "./store";
 import { IonicVue } from '@ionic/vue';
+
+import resquesMixin from "./libGlobal/resques";
+import resquesAMixin from "./libGlobal/resquesA";
+import "./config/axiosApi";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -62,6 +67,27 @@ import {
 import * as allIcons from "ionicons/icons";
 
 declare global {
+  interface Window {
+    getDataSession:any;
+    localtoken:any;
+    userType:any;
+    getStart:any;
+    oauthM:any;
+    accessWeb:any;
+    emailVerify:any;
+    master:any;
+    masters:any;
+    mastera:any;
+    masterb:any;
+    urlmaster:any;
+    urldashboard:any;
+    urlbaselogin:any;
+    urlweb:any;
+    localtokenR:any;
+  }
+}
+
+declare global {
   var icons: any;
 }
 // import components from './custom/components';
@@ -74,6 +100,9 @@ declare global {
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(store)
+  .mixin(resquesMixin)
+  .mixin(resquesAMixin)
   .mixin({
     data() {
       return {
