@@ -13,7 +13,7 @@
     "@aparajita/capacitor-biometric-auth": "^3.1.4",
     "@capacitor/android": "^4.7.0",
     "@capacitor/app": "4.1.1",
-    "@capacitor/core": "4.6.3",
+    "@capacitor/core": "^4.7.0",
     "@capacitor/haptics": "4.1.0",
     "@capacitor/keyboard": "4.1.1",
     "@capacitor/status-bar": "4.1.1",

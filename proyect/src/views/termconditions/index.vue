@@ -10,17 +10,46 @@
         <ion-title text-center style="text-align: center;">Terms & Conditions</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="no-scroll">
+    <ion-content>
       <div id="container">
         <form  @submit.prevent="validate">
           <ion-list lines="full">
-            <div class="space"></div>
-            <div class="space"></div>            
+            <div class="space"></div>           
             <ion-row>
               <ion-col>
-                <ion-item>
-                  <ion-label position="stacked">Terms & Conditions Info</ion-label>
-                </ion-item>
+                  <p class="justify">
+                      1.	Uso de la aplicación: Al utilizar nuestra aplicación, aceptas cumplir con estos términos y condiciones. 
+                      Si no estás de acuerdo con ellos, no uses la aplicación.
+                  </p>
+                  <p class="justify">
+                      2.	Información personal: Al registrarte en nuestra aplicación, proporcionarás información personal, como tu nombre, 
+                      dirección de correo electrónico y número de teléfono. Esta información se utilizará para proporcionarte nuestros servicios y 
+                      para informarte sobre actualizaciones de la aplicación.
+                  </p>                    
+                  <p class="justify">
+                      3.	Privacidad: Tu privacidad es importante para nosotros. No compartiremos tu información personal con terceros sin tu consentimiento.
+                  </p> 
+                  <p class="justify">
+                      4.	Responsabilidad: No nos hacemos responsables de los daños causados por el mal uso de nuestra aplicación. Es tu responsabilidad 
+                      asegurarte de que tu vehículo esté en buen estado y de seguir las recomendaciones de mantenimiento que te proporcionamos.
+                  </p> 
+                  <p class="justify">
+                      5.	Actualizaciones: Es posible que actualicemos nuestra aplicación de vez en cuando para mejorar la experiencia del usuario. 
+                      Al aceptar estos términos y condiciones, aceptas recibir estas actualizaciones.
+                  </p> 
+                  <p class="justify">
+                      6.	Propiedad intelectual: Todos los derechos de propiedad intelectual de nuestra aplicación son de nuestra propiedad. 
+                      No se permite la reproducción o distribución de la aplicación sin nuestro consentimiento previo por escrito.
+                  </p>                     
+                  <p class="justify">
+                    7.	Modificaciones de los términos y condiciones: Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. 
+                    Si lo hacemos, te informaremos de los cambios a través de la aplicación o por correo electrónico.permite la reproducción o distribución de 
+                    la aplicación sin nuestro consentimiento previo por escrito.
+                  </p>
+                  <p class="justify">
+                      Al utilizar nuestra aplicación de mantenimiento de vehículo, aceptas estos términos y condiciones en su totalidad. 
+                      Si tienes alguna pregunta, contáctanos a través de nuestra página de contacto en la aplicación.
+                  </p>
               </ion-col>
             </ion-row>           
           </ion-list>          
@@ -133,6 +162,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .justify{
+    text-align: justify;
+  }
   .space {
     height: 25px;
   }

@@ -10,17 +10,45 @@
         <ion-title text-center style="text-align: center;">Privacy</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="no-scroll">
+    <ion-content>
       <div id="container">
         <form  @submit.prevent="validate">
           <ion-list lines="full">
-            <div class="space"></div>
-            <div class="space"></div>            
+            <div class="space"></div>        
             <ion-row>
               <ion-col>
-                <ion-item>
-                  <ion-label position="stacked">Privacy Info</ion-label>
-                </ion-item>
+                  <p class="justify">
+                    En nuestra aplicación de mantenimiento de vehículo, valoramos tu privacidad y nos comprometemos a proteger tus datos personales. 
+                    A continuación, te explicamos cómo recopilamos, usamos y protegemos tu información:
+                  </p>
+                  <p class="justify">
+                    Recopilación de información: Al registrarte en nuestra aplicación, te pediremos información personal, como tu nombre, 
+                    dirección de correo electrónico y número de teléfono. También recopilamos información sobre tu vehículo, como la marca, modelo y año.
+                  </p>                    
+                  <p class="justify">
+                    Uso de la información: Utilizamos la información recopilada para proporcionarte nuestros servicios, como recordatorios de mantenimiento 
+                    y recomendaciones personalizadas. También podemos utilizar la información para mejorar nuestros servicios y para enviar actualizaciones de la aplicación.
+                  </p> 
+                  <p class="justify">
+                    Compartir información: No compartimos tu información personal con terceros sin tu consentimiento. La información recopilada solo se
+                    comparte con nuestro equipo de soporte técnico y con los proveedores de servicios que trabajan en nuestro nombre.
+                  </p> 
+                  <p class="justify">
+                    Seguridad de la información: Tomamos medidas para proteger tu información personal de la pérdida, el uso no autorizado y la divulgación. 
+                    Utilizamos tecnologías de seguridad de la información para proteger la información recopilada.
+                  </p> 
+                  <p class="justify">
+                    Acceso y corrección de información: Si deseas acceder a la información que tenemos sobre ti o corregir algún dato erróneo,
+                    por favor contáctanos a través de nuestra página de contacto en la aplicación.
+                  </p>                     
+                  <p class="justify">
+                    Cambios en la política de privacidad: Podemos actualizar nuestra política de privacidad de vez en cuando. Si lo hacemos, 
+                    te informaremos a través de la aplicación o por correo electrónico.
+                  </p>
+                  <p class="justify">
+                    En resumen, nos tomamos muy en serio la privacidad de tus datos personales y nos comprometemos a protegerlos. Si tienes alguna pregunta o 
+                    inquietud sobre nuestra política de privacidad, por favor contáctanos a través de nuestra página de contacto en la aplicación.
+                  </p>
               </ion-col>
             </ion-row>           
           </ion-list>          
@@ -133,6 +161,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .justify{
+    text-align: justify;
+  }
   .space {
     height: 25px;
   }

@@ -12,8 +12,8 @@
     </ion-header>
     <ion-content class="no-scroll">
       <div id="container">
-        <form  @submit.prevent="validate">
-          <ion-list lines="full">
+        <form  @submit.prevent="validate" v-bind:style="{ height: height }">
+          <ion-grid>
             <div class="space"></div>
             <div class="space"></div>            
             <ion-row>
@@ -43,7 +43,7 @@
                 <ion-button type="submit" color="light" shape="round" expand="full">Send</ion-button>
               </ion-col>
             </ion-row>                     
-          </ion-list>          
+          </ion-grid>          
         </form>
       </div>                         
     </ion-content>
@@ -58,6 +58,7 @@ export default defineComponent({
     components: { },
     data () {
         return {
+            height: window.innerHeight+"px",
             showPass:false,
             showPassA:false,
             data: {
@@ -120,6 +121,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .indicatorsBtn {
+      margin: auto;
+      width: 100%;
+      justify-content: center;
+      position: absolute;
+      bottom: 100px;
+      display: flex;
+  }
   .space {
     height: 25px;
   }
@@ -128,8 +137,10 @@ export default defineComponent({
   }
   #container {
     position: absolute;
-    left: 5%;
+    left: 10%;
     margin: -25px 0 0 0;
-    width: 90%;
+    top: 5%;
+    /* transform: translateY(-50%); */
+    width: 80%;
   }
 </style>

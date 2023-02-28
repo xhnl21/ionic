@@ -10,17 +10,32 @@
         <ion-title text-center style="text-align: center;">About</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="no-scroll">
+    <ion-content>
       <div id="container">
         <form  @submit.prevent="validate">
           <ion-list lines="full">
-            <div class="space"></div>
-            <div class="space"></div>            
+            <div class="space"></div>          
             <ion-row>
               <ion-col>
-                <ion-item>
-                  <ion-label position="stacked">About Info</ion-label>
-                </ion-item>
+                  <p class="justify">
+                    ¡Bienvenido a nuestra aplicación de mantenimiento de vehículo! Somos una empresa dedicada a proporcionar a nuestros 
+                    usuarios una manera fácil y eficiente de mantener sus vehículos en óptimas condiciones.
+                  </p>
+                  <p class="justify">
+                    Nuestra aplicación es una herramienta imprescindible para cualquier persona que desee mantener su vehículo en perfecto estado. 
+                    Ya sea que seas un conductor experimentado o un principiante en el mundo del mantenimiento de vehículos, nuestra aplicación te 
+                    ayudará a recordar cuándo es el momento adecuado para realizar el mantenimiento de tu vehículo y te proporcionará recomendaciones 
+                    personalizadas según el modelo y marca de tu automóvil.
+                  </p>                    
+                  <p class="justify">
+                    Con nuestra aplicación, no tendrás que preocuparte por perder el registro de mantenimiento de tu vehículo o por olvidar cuándo 
+                    es el momento de realizar un servicio. Te recordaremos cuándo es el momento adecuado para realizar el mantenimiento de tu vehículo 
+                    y te proporcionaremos consejos útiles para mantenerlo en las mejores condiciones.
+                  </p> 
+                  <p class="justify">
+                    En resumen, nuestra aplicación de mantenimiento de vehículo es la herramienta perfecta para mantener tu vehículo en perfectas 
+                    condiciones y prolongar su vida útil. Descárgala ahora y disfruta de una experiencia de mantenimiento de vehículo más fácil y eficiente.
+                  </p> 
               </ion-col>
             </ion-row>           
           </ion-list>          
@@ -133,6 +148,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .justify{
+    text-align: justify;
+  }
   .space {
     height: 25px;
   }

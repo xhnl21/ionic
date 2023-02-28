@@ -8,35 +8,25 @@
           </ion-button>   
         </ion-buttons>
         <ion-title text-center style="text-align: center;">MiAutoBox</ion-title>
-        <!-- <ion-buttons slot="end" >
-          <ion-button router-link="/Login">
-            <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
-          </ion-button>
-          <ion-button router-link="/Welcome">
-            <ion-icon :ios="notificationsOutline" :md="notificationsOutline"></ion-icon>
-          </ion-button>
-          <ion-button router-link="/Welcome">
-            <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
-          </ion-button>                    
-        </ion-buttons>          -->
+        <!-- 
+          <ion-buttons slot="end" >
+            <ion-button router-link="/Login">
+              <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
+            </ion-button>
+            <ion-button router-link="/Welcome">
+              <ion-icon :ios="notificationsOutline" :md="notificationsOutline"></ion-icon>
+            </ion-button>
+            <ion-button router-link="/Welcome">
+              <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
+            </ion-button>                    
+          </ion-buttons>
+         -->
       </ion-toolbar>
     </ion-header>    
     <ion-content class="no-scroll">
-      <div id="container">
-        <form @submit.prevent="validate">
-          <ion-grid>
-            <div class="space"></div>
-            <div class="space"></div>
-            <ion-row>
-              <ion-col>
-                <small style="text-align: center;">
-                  <h1>Welcome</h1>                  
-                </small>
-              </ion-col>
-            </ion-row>       
-          </ion-grid>          
-        </form>
-      </div>
+      <ion-card  style="position: absolute;margin-top: -10px;">
+        <img alt="Silhouette of mountains" :src="img" />
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -48,6 +38,7 @@ export default defineComponent({
     components: {},
     data () {
         return {
+            img:process.env.BASE_URL+"assets/tutorial/c.jpg",         
             showPass:false,
             showPassA:false,
             data: {
@@ -94,6 +85,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+img {
+  max-height: none !important;
+}
   .space {
     height: 25px;
   }

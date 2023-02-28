@@ -31,7 +31,7 @@
               <ion-item>
                 <ion-icon slot="start" :ios="notificationsOutline" :md="notificationsOutline"></ion-icon> 
                 <ion-label>Push Notifications</ion-label>  
-                <ion-toggle slot="end" v-model="noti" v-if="noti === true"  @click="notifications"></ion-toggle>
+                <ion-toggle slot="end" v-model="noti" @click="notifications"></ion-toggle>
               </ion-item>
               <ion-item>
                 <ion-icon slot="start" :ios="fingerPrintOutline" :md="fingerPrintOutline"></ion-icon> 
@@ -57,8 +57,8 @@
     </ion-page>
   </template>
   <script>
-  import { loadingController, alertController } from '@ionic/vue';
   import { arrowForward, happyOutline, notificationsOutline, helpBuoy, arrowBackSharp, eye, eyeOff, lockClosed, logIn, person, fingerPrintOutline, logoGoogle, logoFacebook } from 'ionicons/icons';
+  import { loadingController, alertController } from '@ionic/vue';
   export default {
     data () {
         return {
@@ -95,19 +95,28 @@
         this.$router.push('/Help');
       },
       notifications () {
-        console.log(this.noti);
+        var msj = "Las notificaciones ha sido activadas"  
         if (this.noti === true) {
-          this.noti = false
-        } else {
-          this.noti = true
+          msj = "Las notificaciones ha sido desactivadas"
+          this.showLoading(msj, false)
         }
-        // alert("demo")
+        this.showLoading(msj, false)
       },
       biometric () {
-        this.$router.push('/Help');
+        var msj = "Biometric FingerPrint ha sido activadas"  
+        if (this.bio === true) {
+          msj = "Biometric FingerPrint ha sido desactivadas"
+          this.showLoading(msj, false)
+        }
+        this.showLoading(msj, false)
       },
       face () {
-        this.$router.push('/Help');
+        var msj = "Biometric Face ha sido activadas"  
+        if (this.faceId === true) {
+          msj = "Biometric Face ha sido desactivadas"
+          this.showLoading(msj, false)
+        }
+        this.showLoading(msj, false)
       },
     },
     setup() {
