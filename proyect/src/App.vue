@@ -8,7 +8,7 @@
             <ion-avatar style="margin: auto;">
               <img :src="ImgProfile" />              
             </ion-avatar>
-            <ion-note text-center style="margin: auto; display: table;">hi@ionicframework.com</ion-note>
+            <ion-note text-center style="margin: auto; display: table;">miautobox@miautobox.com</ion-note>
             <div class="space"></div>
             <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item @click="selectedIndex = i" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">

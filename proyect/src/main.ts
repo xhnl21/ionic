@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router';
 import store from "./store";
 import { IonicVue } from '@ionic/vue';
-
+// import { useStore } from 'vuex'
 import resquesMixin from "./libGlobal/resques";
 import resquesAMixin from "./libGlobal/resquesA";
 import "./config/axiosApi";
@@ -89,6 +89,7 @@ declare global {
 
 declare global {
   var icons: any;
+  // var $store: any
 }
 // import components from './custom/components';
 // const component = components.install;
@@ -111,6 +112,7 @@ const app = createApp(App)
     },
     mounted () {
       window.icons = allIcons;
+      // $store = useStore()
     }
   });
   

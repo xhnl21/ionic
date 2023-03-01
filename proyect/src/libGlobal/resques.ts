@@ -6,6 +6,8 @@
 // url = es la ruta donde se hace peticiones ===>>> obligatorio
 // data = normalmente se usa cuando se aplica "post" y "put"
 // method = indica el nombre del metodo quien invoka la funtion de peticiones ===>>> obligatorio
+import { useStore } from 'vuex'
+const $store = useStore()
 const resquesMixin = {
     methods: {
         resques (type: any, token: any, upload: any, event: any, url: any, data: any, method: any) {
@@ -27,9 +29,13 @@ const resquesMixin = {
                                 formData.append("image" + i, event.target.files[i]);
                             }
                         }
-                        for (const [key, value] of Object.entries(data)) {
-                            formData.append(key, value);
-                        }
+                        alert("reparar Object.entries(data)")
+                        console.log("reparar Object.entries(data)")
+                        
+                        return 0;
+                        // for (const [key, value] of Object.entries(data)) {
+                        //     formData.append(key, value);
+                        // }
                         window.masterb
                             .post(url, formData, fileSendHeader)
                             .then((response: any) => {
@@ -61,9 +67,13 @@ const resquesMixin = {
                                 formData.append("image" + i, event.target.files[i]);
                             }
                         }
-                        for (const [key, value] of Object.entries(data)) {
-                            formData.append(key, value);
-                        }
+                        alert("reparar Object.entries(data)")
+                        console.log("reparar Object.entries(data)")
+                        
+                        return 0;
+                        // for (const [key, value] of Object.entries(data)) {
+                        //     formData.append(key, value);
+                        // }
                         window.master
                             .post(url, formData, fileSendHeader)
                             .then((response: any) => {
@@ -119,9 +129,13 @@ const resquesMixin = {
                                 formData.append("image" + i, event.target.files[i]);
                             }
                         }
-                        for (const [key, value] of Object.entries(data)) {
-                            formData.append(key, value);
-                        }
+                        alert("reparar Object.entries(data)")
+                        console.log("reparar Object.entries(data)")
+                        
+                        return 0;
+                        // for (const [key, value] of Object.entries(data)) {
+                        //     formData.append(key, value);
+                        // }
                         window.masterb
                             .put(url, formData, fileSendHeader)
                             .then((response: any) => {
@@ -153,9 +167,13 @@ const resquesMixin = {
                                 formData.append("image" + i, event.target.files[i]);
                             }
                         }
-                        for (const [key, value] of Object.entries(data)) {
-                            formData.append(key, value);
-                        }
+                        alert("reparar Object.entries(data)")
+                        console.log("reparar Object.entries(data)")
+                        
+                        return 0;
+                        // for (const [key, value] of Object.entries(data)) {
+                        //     formData.append(key, value);
+                        // }
                         window.master
                             .put(url, formData, fileSendHeader)
                             .then((response: any) => {
@@ -205,7 +223,7 @@ const resquesMixin = {
             const k = [];
             k.push({ function:name, method:method, data:data });
             console.log(k);
-            this.$store.commit("SethttpResques", k);
+            $store.commit("SethttpResques", k);
         }
     }
 };

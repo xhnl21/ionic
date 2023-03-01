@@ -1,0 +1,7 @@
+ubicarse dentro del proyecto 
+luego ir al documento strings.xml
+proyect\android\app\src\main\res\values\strings.xml
+
+cambiar el nombre Default por Autobox
+    <string name="app_name">Autobox</string>
+    <string name="title_activity_main">Autobox</string>

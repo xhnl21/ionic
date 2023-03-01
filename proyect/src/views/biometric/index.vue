@@ -18,11 +18,9 @@
         </ion-item>
       </ion-list>
     
-      <ion-list class="mt-6" lines="full">
+      <!-- <ion-list class="mt-6" lines="full">
         <ion-list-header>Options</ion-list-header>
         <ion-item v-if="!isNative">
-          <!-- <ion-item> -->
-          <!-- flex-initial puts the ion-select just after the label -->
           <ion-label class="flex-initial">Biometry:</ion-label>
           <ion-select
             v-model="biometryType"
@@ -70,12 +68,12 @@
           <ion-checkbox v-model="options.allowDeviceCredential" />
           <ion-label>Allow device credential</ion-label>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
     
       <!-- We want to center the button -->
       
         <div class="flex justify-center">
-          <ion-button class="mt-5" size="default" shape="round" @click="onAuthenticate">Authenticate</ion-button>
+          <ion-button expand="full" shape="round" @click="onAuthenticate">Authenticate</ion-button>
         </div> 
      
     </ion-content>

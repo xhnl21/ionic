@@ -8,25 +8,33 @@
           </ion-button>   
         </ion-buttons>
         <ion-title text-center style="text-align: center;">MiAutoBox</ion-title>
-        <!-- 
+        
           <ion-buttons slot="end" >
-            <ion-button router-link="/Login">
+            <ion-button @click="develoment">
               <ion-icon :ios="searchOutline" :md="searchOutline"></ion-icon>
             </ion-button>
-            <ion-button router-link="/Welcome">
+            <ion-button @click="develoment">
               <ion-icon :ios="notificationsOutline" :md="notificationsOutline"></ion-icon>
             </ion-button>
-            <ion-button router-link="/Welcome">
+            <ion-button @click="develoment">
               <ion-icon :ios="cartOutline" :md="cartOutline"></ion-icon>
             </ion-button>                    
           </ion-buttons>
-         -->
+        
       </ion-toolbar>
     </ion-header>    
     <ion-content class="no-scroll">
-      <ion-card  style="position: absolute;margin-top: -10px;">
+      <ion-card  style="position: absolute;margin-top: -60px;">
         <img alt="Silhouette of mountains" :src="img" />
       </ion-card>
+     
+      <ion-grid>       
+        <ion-row class="indicatorsBtn">
+          <ion-col style="justify-content: center; text-align: center; margin: auto;">
+            <ion-button style="width: 85%; margin: auto;" router-link="/Dashboard" color="light" expand="full" shape="round">Empecemos!</ion-button>
+          </ion-col>
+        </ion-row>                 
+      </ion-grid>       
     </ion-content>
   </ion-page>
 </template>
@@ -38,7 +46,7 @@ export default defineComponent({
     components: {},
     data () {
         return {
-            img:process.env.BASE_URL+"assets/tutorial/c.jpg",         
+            img:process.env.BASE_URL+"assets/tutorial/w.jpg",         
             showPass:false,
             showPassA:false,
             data: {
@@ -56,6 +64,9 @@ export default defineComponent({
       }, 
       form () {
           console.log("demoA");
+      }, 
+      develoment () {
+          this.showLoading("This option is under development", false);   
       }, 
     },
     setup() {
@@ -85,6 +96,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .indicatorsBtn {
+      margin: auto;
+      width: 100%;
+      justify-content: center;
+      position: absolute;
+      bottom: 30px;
+      display: flex;
+  }
 img {
   max-height: none !important;
 }
