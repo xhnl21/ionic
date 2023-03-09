@@ -1,0 +1,7 @@
+{
+  "name": "sprinrsplash",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

@@ -63,11 +63,13 @@ export default defineComponent({
     
     methods: { 
       async googleSignup () {
+        alert("iniciando")
         const response = await GoogleAuth.signIn();
-        console.log(response);
-        this.dt = response
-        this.showLoading(response.email, false); 
-        alert(response.email)            
+        alert(JSON.stringify(response))
+        // console.log(response);
+        // this.dt = response
+        // this.showLoading(response.email, false); 
+        // alert(response.email)            
       }, 
       async googleSignup2 () {
         const response = await Plugins.GoogleAuth.signIn();

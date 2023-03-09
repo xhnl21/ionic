@@ -95,6 +95,7 @@ import {
     alertController,
     isPlatform
   } from '@ionic/vue'
+  import { useRouter } from 'vue-router';
   import {
     computed,
     onMounted,
@@ -104,7 +105,7 @@ import {
     ref,
     toRaw
   } from 'vue'
-  
+  const router = useRouter();
   const biometryTypes = [
     {
       title: 'None',
@@ -233,7 +234,8 @@ import {
       // options is a reactive proxy, we can't pass it directly to a plugin.
       // so pass the underlying object.
       await BiometricAuth.authenticate(toRaw(options))
-      await showAlert('Authorization successful!')
+      // await showAlert('Authorization successful!')
+      router.push('/Welcome')
     } catch (error) {
       // Someday TypeScript will let us type catch clauses...
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

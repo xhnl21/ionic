@@ -1,0 +1,11 @@
+splash screen
+abrir visual estudio code
+ubicarse en el proyecto donde estas trabajando con ionic 
+luego, ir a la opcion de extensiones o plugin
+busca la extension de "ionic" y descarga
+en el lateral izquierdo, al final o parte inferior esta el icono de ionic 
+al hacer clic en el icono te pedira que inicies sesion o que te registre
+una vez iniciado sesion, ubicar la opcion de configuraciones
+al hacer clic, se mostrara splash screnn & icon
+al darle clic en [splash screnn, icon, icon foreground, icon background] 
+se mostrara una opcion donde te indica el tamanao de la img 

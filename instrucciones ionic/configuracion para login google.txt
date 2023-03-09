@@ -2,7 +2,39 @@
 myApp/android/build.gradle
 classpath 'com.google.gms:google-services:4.3.15'
 
+//////////////////////////
 myApp/android/app/build.gradle
 apply plugin: 'com.google.gms.google-services'
 implementation platform('com.google.firebase:firebase-bom:31.2.2')
 google-services.json
+
+//////////////////////////
+social2\android\app\src\main\java\io\ionic\starter\MainActivity.java
+package io.ionic.starter;
+
+import android.os.Bundle;
+
+import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.Plugin;
+
+import java.util.ArrayList;
+import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
+
+public class MainActivity extends BridgeActivity {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        registerPlugin(GoogleAuth.class);
+        // Initializes the Bridge
+    }
+}
+
+//////////////////////////
+social2\android\app\src\main\res\values\strings.xml
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">social2</string>
+    <string name="title_activity_main">social2</string>
+    <string name="package_name">io.ionic.starter</string>
+    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="server_client_id">684898322638-ii25lgt2itbb968saasee2b9hoqv6cg1.apps.googleusercontent.com</string>
+</resources>
